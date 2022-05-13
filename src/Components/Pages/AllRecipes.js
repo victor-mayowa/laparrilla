@@ -1,13 +1,13 @@
 import React from "react";
-import Body from "../AllRecipes/Body";
-import Header from "../AllRecipes/Header";
+import AllRecipesBody from "../AllRecipes/AllRecipesBody";
+import Header from "../ui/Header";
 
 
 const AllRecipes = () => {
   return (
     <div className= "relative md:ml-[60px] ml-0">
-       <Header/>
-      <Body/>
+       <Header name="All recipes" buttons="" />
+      <AllRecipesBody/>
     </div>
   );
 };

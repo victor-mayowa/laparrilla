@@ -2,24 +2,28 @@ import React, { useContext } from "react";
 import Logo from "../assests/La-Parrilla-load-Logo.png";
 import { MenuIcon } from "@heroicons/react/solid";
 import DataContext from "../store/storeContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const dataCtx = useContext(DataContext)
+  const dataCtx = useContext(DataContext);
 
-  const toggleHandler = dataCtx.toggleHandler
-  
+  const toggleHandler = dataCtx.toggleHandler;
+
   return (
     <div className="bg-[#003F5A]  w-full fixed z-10">
       <div className=" py-5 mx-auto flex justify-between items-center px-5">
-
         <div className="flex items-end">
-
           <div className="pr-6 mb-1 ">
-            <MenuIcon className=" w-7 cursor-pointer text-[#BFBFBF]" onClick={toggleHandler} />
+            <MenuIcon
+              className=" w-7 cursor-pointer text-[#BFBFBF]"
+              onClick={toggleHandler}
+            />
           </div>
 
           <div>
-            <img src={Logo} alt="Logo" className="w-[120px] " />
+            <Link to="/">
+              <img src={Logo} alt="Logo" className="w-[120px] " />
+            </Link>
           </div>
 
         </div>

@@ -1,9 +1,11 @@
 import React from "react";
 import {PencilAltIcon, TrashIcon} from "@heroicons/react/solid"
+import { Link } from "react-router-dom";
 
 
 const Cards = () => {
   return (
+    <Link to="/recipepage">
     <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
       <div className=" text-center">
         <p className="text-[14px] font-light mb-8">Recipes</p>
@@ -30,6 +32,7 @@ const Cards = () => {
       </div>
 
     </div>
+    </Link>
   );
 };
 
