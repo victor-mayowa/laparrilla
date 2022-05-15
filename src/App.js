@@ -6,6 +6,8 @@ import { DataContextProvider } from "./Components/store/storeContext";
 import Layout from "./Components/Layout/Layout";
 import RecipePage from "./Components/Pages/RecipePage";
 import BarRecipes from "./Components/Pages/BarRecipes";
+import KitchenRecipes from "./Components/Pages/KitchenRecipes";
+import UsersPage from "./Components/Pages/UsersPage";
 
 function App() {
   return (
@@ -14,10 +16,12 @@ function App() {
         <Router>
           <Layout />
           <Routes>
-          <Route path="/" element={<AllRecipes/>} />
-          <Route path="/addrecipes" element={<AddRecipes/>}/>
-          <Route path="/recipepage" element={<RecipePage/>}/>
-          <Route path="/barrecipes" element={<BarRecipes/>}/>
+            <Route path="/" element={<AllRecipes />} />
+            <Route path="/addrecipes" element={<AddRecipes />} />
+            <Route path="/recipepage" element={<RecipePage />} />
+            <Route path="/barrecipes" element={<BarRecipes />} />
+            <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />
+            <Route path="/Users" element={<UsersPage/>}/>
           </Routes>
         </Router>
       </DataContextProvider>

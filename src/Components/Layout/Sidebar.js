@@ -27,24 +27,28 @@ const Sidebar = () => {
         }
       >
         <ul className="flex items-center justify-center flex-col">
-          <Link to="/addrecipes">
-            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-              <MdOutlineAddBox color="#BFBFBF" size={25} />
-            </li>
-          </Link>
-
-          <Link to="/barrecipes">
-            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-              <MdOutlineLocalBar color="#BFBFBF" size={25} />
-            </li>
-          </Link>
-
           <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <MdOutlineKitchen color="#BFBFBF" size={25} />
+            <Link to="/addrecipes">
+              <MdOutlineAddBox color="#BFBFBF" size={25} />
+            </Link>
           </li>
 
           <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <MdPeopleOutline color="#BFBFBF" size={25} />
+            <Link to="/barrecipes">
+              <MdOutlineLocalBar color="#BFBFBF" size={25} />
+            </Link>
+          </li>
+
+          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+            <Link to="/kitchenrecipes">
+              <MdOutlineKitchen color="#BFBFBF" size={25} />
+            </Link>
+          </li>
+
+          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+            <Link to="/Users">
+              <MdPeopleOutline color="#BFBFBF" size={25} />
+            </Link>
           </li>
 
           <li className="mb-[170px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
@@ -72,10 +76,14 @@ const Sidebar = () => {
 
           <div>
             <Link to="/">
-              <img src={Logo} alt="Logo" className="w-[120px] "onClick={toggleHandler} />
+              <img
+                src={Logo}
+                alt="Logo"
+                className="w-[120px] "
+                onClick={toggleHandler}
+              />
             </Link>
           </div>
-
         </div>
         <ul>
           <Link to="/addrecipes">
@@ -92,15 +100,19 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
-            <MdOutlineKitchen color="#BFBFBF" size={25} />
-            <p className="text-[14px] text-[#BFBFBF] ml-2">Kitchen recipes</p>
-          </li>
+          <Link to="/kitchenrecipes">
+            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+              <MdOutlineKitchen color="#BFBFBF" size={25} />
+              <p className="text-[14px] text-[#BFBFBF] ml-2">Kitchen recipes</p>
+            </li>
+          </Link>
 
-          <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
-            <MdPeopleOutline color="#BFBFBF" size={25} />
-            <p className="text-[14px] text-[#BFBFBF] ml-2">Users</p>
-          </li>
+          <Link to="/Users">
+            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+              <MdPeopleOutline color="#BFBFBF" size={25} />
+              <p className="text-[14px] text-[#BFBFBF] ml-2">Users</p>
+            </li>
+          </Link>
 
           <li className="mb-[170px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdOutlineSettings color="#BFBFBF" size={25} />

@@ -1,7 +1,8 @@
 import React from "react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Cards from "../ui/Cards";
-import Icons from "../AllRecipes/Icons";
+import Icons from "../ui/Icons";
+import BarData from "../Data/BarData";
 
 const BarRecipesBody = () => {
   return (
@@ -11,16 +12,17 @@ const BarRecipesBody = () => {
           Bar Recipes <ChevronDownIcon className="w-5 ml-2" />
         </p>
         <div>
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
-          <Cards />
+          {BarData.map((data) => {
+            return (
+              <Cards
+                key={data.index}
+                name={data.name}
+                comment={data.comment}
+                user={data.user}
+              />
+            );
+          })}
+
           <Icons className="mt-8" />
         </div>
       </div>
