@@ -6,9 +6,8 @@ export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
 
   const toggleHandler = () => {
-    console.log(toggle);
     setToggle(!toggle);
-    console.log(!toggle)
+  
   };
 
   const context = {

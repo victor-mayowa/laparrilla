@@ -8,6 +8,8 @@ import RecipePage from "./Components/Pages/RecipePage";
 import BarRecipes from "./Components/Pages/BarRecipes";
 import KitchenRecipes from "./Components/Pages/KitchenRecipes";
 import UsersPage from "./Components/Pages/UsersPage";
+import UserDetailPage from "./Components/Pages/UserDetailPage"
+import EditPage from "./Components/Pages/EditPage"
 
 function App() {
   return (
@@ -21,7 +23,10 @@ function App() {
             <Route path="/recipepage" element={<RecipePage />} />
             <Route path="/barrecipes" element={<BarRecipes />} />
             <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />
-            <Route path="/Users" element={<UsersPage/>}/>
+            <Route path="/users" element={<UsersPage/>}/>
+            <Route path="/user/view/:id" element={<UserDetailPage/>}/>
+
+            <Route path="/edit" element={<EditPage/>}/>
           </Routes>
         </Router>
       </DataContextProvider>

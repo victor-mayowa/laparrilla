@@ -2,7 +2,7 @@ import React from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 
-const Cards = ({userName, name, accessLevel, email }) => {
+const Cards = ({id,userName, name, accessLevel, email }) => {
   return (
       <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
         <div className=" text-center">
@@ -22,13 +22,15 @@ const Cards = ({userName, name, accessLevel, email }) => {
 
         <div className=" text-center">
           <p className="text-[14px] font-light mb-8">Email</p>
-          <p className="font-regular underline text-[14px] cursor-pointer">{email}</p>
+          <p className="font-regular underline text-[14px]">{email}</p>
         </div>
 
         <div className="text-center">
           <p className="mb-8">Actions</p>
           <div className="flex justify-center items-center">
-          <Link to="/recipepage">
+          <Link to={`/user/view/${id}`} state={{
+            id:id, userName:userName, name:name, accessLevel:accessLevel, email:email
+          }}>
             <button className="py-1 px-4 bg-[#0879aa2c] rounded-3xl mr-1 hover:bg-[#0879aa11]">
               view
             </button>

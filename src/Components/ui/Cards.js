@@ -18,7 +18,9 @@ const Cards = ({ name, comment, user }) => {
       <div className="text-center">
         <p className="mb-8">Actions</p>
         <div className="flex justify-center items-center">
-          <Link to="/recipepage">
+          <Link to="/recipepage" state={{
+            name:name, user:user
+          }}>
             <button className="py-1 px-4 bg-[#0879aa2c] rounded-3xl mr-1 hover:bg-[#0879aa11]">
               view
             </button>
@@ -30,9 +32,9 @@ const Cards = ({ name, comment, user }) => {
 
       <div className=" text-center">
         <p className="text-[14px] font-light mb-8">User</p>
-        <p className="font-regular  underline text-[14px] cursor-pointer">
+        <Link to="/user/view/0"> <p className="font-regular  underline text-[14px] cursor-pointer">
           {user}
-        </p>
+        </p></Link>
       </div>
     </div>
   );

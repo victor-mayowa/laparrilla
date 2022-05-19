@@ -9,7 +9,7 @@ const KitchenRecipesBody = () => {
     <div className=" max-w-[1240px] mx-auto bg-white">
       <div className="max-w-[1000px] mx-auto py-4">
         <p className="font-poppins font-light p-4 flex items-center">
-          Bar Recipes <ChevronDownIcon className="w-5 ml-2" />
+          Kitchen Recipes <ChevronDownIcon className="w-5 ml-2" />
         </p>
         <div>
         {KitchenData.map((data) => {

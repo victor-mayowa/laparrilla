@@ -46,13 +46,15 @@ const Sidebar = () => {
           </li>
 
           <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/Users">
+            <Link to="/users">
               <MdPeopleOutline color="#BFBFBF" size={25} />
             </Link>
           </li>
 
           <li className="mb-[170px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+            <Link to="/edit">
             <MdOutlineSettings color="#BFBFBF" size={25} />
+            </Link>
           </li>
 
           <li className="h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
@@ -107,17 +109,20 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <Link to="/Users">
+          <Link to="/users">
             <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
               <MdPeopleOutline color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">Users</p>
             </li>
           </Link>
 
+          <Link to="/edit">
           <li className="mb-[170px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdOutlineSettings color="#BFBFBF" size={25} />
             <p className="text-[14px] text-[#BFBFBF] ml-2">Settings</p>
           </li>
+          </Link>
+         
 
           <li className="  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdLogin color="#BFBFBF" size={25} />
