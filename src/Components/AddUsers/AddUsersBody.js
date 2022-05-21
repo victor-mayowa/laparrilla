@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 
-const EditPageBody = () => {
+const AddUsersBody = () => {
 
-  const locate = useLocation()
-  // console.log(locate)
-  
-  
-  // const {userName,name,email} = locate.state
-  const [userName, setUserName] = useState(locate.state.userName)
-  const [name, setName] = useState(locate.state.name)
-  const [email, setEmail] = useState(locate.state.email)
-  const [accessLevel, setAccessLevel] = useState(locate.state.accessLevel)
+  const [userName, setUserName] = useState("")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [lang, setLang] = useState("")
 
 const submitHandler = (e)=>{
   e.preventDefault();
@@ -19,7 +13,7 @@ const submitHandler = (e)=>{
     userName,
     name,
     email,
-    accessLevel
+    lang
   }
   console.log(data)
 }
@@ -89,12 +83,27 @@ const submitHandler = (e)=>{
 
           <div>
             <label className="mr-9 inline-block w-[150px]">AccessLevel</label>
-            <select  className="py-2 pl-2 w-[400px] border-[1px] border-slate-600 rounded-sm" value={accessLevel} onChange={(e)=>{
+            <select  className="py-2 pl-2 w-[400px] border-[1px] border-slate-600 rounded-sm" value={lang} onChange={(e)=>{
               const selected = e.target.value
-              setAccessLevel(selected)         
+              setLang(selected)         
             }}>
-              <option value={90}>Admin</option>
-              <option value={30}>View only</option>
+              <option value={"en"}>English</option>
+              <option value={"fr"}>Chinese</option>
+              <option value={"fr"}>Danish</option>
+              <option value={"fr"}>Dutch</option>
+              <option value={"fr"}>Estonian</option>
+              <option value={"fr"}>French</option>
+              <option value={"fr"}>German</option>
+              <option value={"fr"}>Hungarian</option>
+              <option value={"fr"}>Italian</option>
+              <option value={"fr"}>Japanese</option>
+              <option value={"fr"}>Korean</option>
+              <option value={"fr"}>Norwegian</option>
+              <option value={"fr"}>Portuguese</option>
+              <option value={"fr"}>Turkish</option>
+              <option value={"fr"}>Serbian</option>
+              <option value={"fr"}>Spanish</option>
+              <option value={"fr"}>Swedish</option>
             </select>
           </div>
 
@@ -110,4 +119,4 @@ const submitHandler = (e)=>{
   );
 };
 
-export default EditPageBody;
+export default AddUsersBody;

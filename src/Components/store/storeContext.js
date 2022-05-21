@@ -4,6 +4,10 @@ const DataContext = createContext({});
 
 export const DataContextProvider = ({ children }) => {
   const [toggle, setToggle] = useState(true);
+  
+  const [userData, setUserData] = useState([])
+
+  const [location, setLocation] = useState()
 
   const toggleHandler = () => {
     setToggle(!toggle);
@@ -13,9 +17,11 @@ export const DataContextProvider = ({ children }) => {
   const context = {
       toggle : toggle,
       setToggle : setToggle,
-      toggleHandler: toggleHandler
-
-
+      toggleHandler: toggleHandler,
+      userData:userData,
+      setUserData:setUserData,
+      location:location,
+      setLocation:setLocation,
   }
 
   return <DataContext.Provider value={context}>{children}</DataContext.Provider>;

@@ -52,7 +52,12 @@ const Sidebar = () => {
           </li>
 
           <li className="mb-[170px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/edit">
+            <Link to="/edit" state={{
+             userName: "testing",
+             name: "Demo testing",
+             accessLevel: "90",
+             email: "demotesting@gmail.com",
+          }}>
             <MdOutlineSettings color="#BFBFBF" size={25} />
             </Link>
           </li>
@@ -116,7 +121,12 @@ const Sidebar = () => {
             </li>
           </Link>
 
-          <Link to="/edit">
+          <Link to="/edit" state={{
+             userName: "testing",
+             name: "Demo testing",
+             accessLevel: 90,
+             email: "demotesting@gmail.com",
+          }}>
           <li className="mb-[170px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdOutlineSettings color="#BFBFBF" size={25} />
             <p className="text-[14px] text-[#BFBFBF] ml-2">Settings</p>

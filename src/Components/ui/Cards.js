@@ -32,7 +32,7 @@ const Cards = ({ name, comment, user }) => {
 
       <div className=" text-center">
         <p className="text-[14px] font-light mb-8">User</p>
-        <Link to="/user/view/0"> <p className="font-regular  underline text-[14px] cursor-pointer">
+        <Link to=""> <p className="font-regular  underline text-[14px] cursor-pointer">
           {user}
         </p></Link>
       </div>
