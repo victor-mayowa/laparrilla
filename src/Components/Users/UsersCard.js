@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+import DataContext from "../store/storeContext";
+
 
 const Cards = ({id, userName, name, accessLevel, email }) => {
+
+  const dataCtx = useContext(DataContext)
+
+  const modalHandler = dataCtx.modalHandler
+
+
+
   return (
       <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
         <div className=" text-center">
@@ -42,7 +51,7 @@ const Cards = ({id, userName, name, accessLevel, email }) => {
             <PencilAltIcon className="w-6 text-[#07335E] cursor-pointer mr-1 hover:text-[#07335eb4]" />
             </Link>
 
-            <TrashIcon className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
+            <TrashIcon onClick={modalHandler} className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
 
           </div>
         </div>

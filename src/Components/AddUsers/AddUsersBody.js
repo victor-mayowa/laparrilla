@@ -82,28 +82,28 @@ const submitHandler = (e)=>{
           </div>
 
           <div>
-            <label className="mr-9 inline-block w-[150px]">AccessLevel</label>
+            <label className="mr-9 inline-block w-[150px]">Language</label>
             <select  className="py-2 pl-2 w-[400px] border-[1px] border-slate-600 rounded-sm" value={lang} onChange={(e)=>{
               const selected = e.target.value
               setLang(selected)         
             }}>
               <option value={"en"}>English</option>
-              <option value={"fr"}>Chinese</option>
-              <option value={"fr"}>Danish</option>
-              <option value={"fr"}>Dutch</option>
-              <option value={"fr"}>Estonian</option>
+              <option value={"zh"}>Chinese</option>
+              <option value={"da"}>Danish</option>
+              <option value={"nl"}>Dutch</option>
+              <option value={"et"}>Estonian</option>
               <option value={"fr"}>French</option>
-              <option value={"fr"}>German</option>
-              <option value={"fr"}>Hungarian</option>
-              <option value={"fr"}>Italian</option>
-              <option value={"fr"}>Japanese</option>
-              <option value={"fr"}>Korean</option>
-              <option value={"fr"}>Norwegian</option>
-              <option value={"fr"}>Portuguese</option>
-              <option value={"fr"}>Turkish</option>
-              <option value={"fr"}>Serbian</option>
-              <option value={"fr"}>Spanish</option>
-              <option value={"fr"}>Swedish</option>
+              <option value={"de"}>German</option>
+              <option value={"hu"}>Hungarian</option>
+              <option value={"it"}>Italian</option>
+              <option value={"ja"}>Japanese</option>
+              <option value={"ko"}>Korean</option>
+              <option value={"nn"}>Norwegian</option>
+              <option value={"pt"}>Portuguese</option>
+              <option value={"tr"}>Turkish</option>
+              <option value={"sr"}>Serbian</option>
+              <option value={"es"}>Spanish</option>
+              <option value={"sv"}>Swedish</option>
             </select>
           </div>
 
