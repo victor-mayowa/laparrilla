@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const Header = ({name, buttons, link, buttonName}) => {
@@ -9,7 +10,10 @@ const Header = ({name, buttons, link, buttonName}) => {
 
               <div className={`${buttons}`}>
 
+                <Link to="addrecipes">
                 <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]' >Add recipes</button>
+                </Link>
+               
 
                 <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]'>Import</button>
 

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import DataContext from "../store/storeContext";
 
 
-const Cards = ({id, userName, name, accessLevel, email }) => {
+const Cards = ({ id, userName, name, accessLevel, email }) => {
 
   const dataCtx = useContext(DataContext)
 

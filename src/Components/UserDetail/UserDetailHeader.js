@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useContext } from "react";
 import { Link} from 'react-router-dom'
+import DataContext from "../store/storeContext";
+
 
 
 
 
 const UserHeader = () => {
+  const dataCtx = useContext(DataContext)
+
+  const modalHandler = dataCtx.modalHandler
 
   return (
         <div className='max-w-[1240px] mx-auto bg-[#D5E7EF] flex p-8 top-0 pt-[153px]'>
@@ -21,7 +26,7 @@ const UserHeader = () => {
                 </Link>
                
 
-                <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]'>Delete User</button>
+                <button onClick={modalHandler} className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]'>Delete User</button>
 
                 <Link to="/users">
                 <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white  text-[14px] hover:bg-[#0a8d8d]'>List Users</button>

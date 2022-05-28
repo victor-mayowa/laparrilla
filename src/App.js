@@ -13,6 +13,7 @@ import EditUsersPage from "./Components/Pages/EditUsersPage"
 import BaseTypePage from "./Components/Pages/BaseTypePage";
 import CoursesPage from "./Components/Pages/CoursesPage";
 import AddUsersPage from "./Components/Pages/AddUsersPage";
+import EditBarPage from "./Components/Pages/EditBarPage";
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AllRecipes />} />
             <Route path="/addrecipes" element={<AddRecipes />} />
+            <Route path="/editbar" element={<EditBarPage/>}/>
             <Route path="/recipepage" element={<RecipePage />} />
             <Route path="/barrecipes" element={<BarRecipes />} />
             <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />

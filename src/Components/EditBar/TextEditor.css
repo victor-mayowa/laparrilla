@@ -1,0 +1,12 @@
+.toolbarClassName{
+    border: 1px solid #ccc;
+}
+.wrapperClassName{
+    padding: 1rem;
+    border: 1px solid #ccc;
+}
+.editorClassName{
+    background-color:lightgray;
+    padding: 1rem;
+    border: 1px solid #ccc;
+}

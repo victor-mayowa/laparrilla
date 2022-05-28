@@ -13,7 +13,7 @@ const UsersPageBody = () => {
 
   useEffect(()=>{
     setUserData(UsersData)
-  },[])
+  })
 
   
   return (

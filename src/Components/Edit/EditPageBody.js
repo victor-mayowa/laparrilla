@@ -26,6 +26,7 @@ const submitHandler = (e)=>{
   return (
     <div className=" max-w-[1240px] mx-auto bg-white py-6">
       <div className="max-w-[1000px] mx-auto p-6 ">
+        
         <form className=" max-w-[600px] flex flex-col md:items-center" onSubmit={submitHandler}>
 
           <div className="mb-6">

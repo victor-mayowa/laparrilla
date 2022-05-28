@@ -3,6 +3,7 @@ import {
     MdOutlineKitchen,
     MdOutlineLocalBar
   } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const AddRecipesBody = () => {
   return (
@@ -15,9 +16,12 @@ const AddRecipesBody = () => {
         
           <div className="flex flex-col items-center justify-center py-10 md:flex-row">
 
-              <button className='flex  items-center justify-center bg-[#007A7A] py-4 px-20 rounded-2xl text-white  text-[16px] hover:bg-[#0a8d8d] md:mr-[12rem] mb-4 md:mb-0'><MdOutlineKitchen size={25} className="mr-2"/>   Add kitchen recipes</button>
-              <button className='flex items-center justify-center bg-[#007A7A] py-4 px-20 rounded-2xl text-white mr-3 text-[16px] hover:bg-[#0a8d8d]'><MdOutlineLocalBar size={25} className="mr-2"/>   Add Bar recipes</button>
+          <Link to="/editbar">
+            <button className='flex items-center justify-center bg-[#007A7A] py-4 px-20 rounded-2xl text-white md:mr-[12rem] text-[16px] hover:bg-[#0a8d8d]'><MdOutlineLocalBar size={25} className="mr-2"/>   Add Bar recipes</button>
+            </Link>
 
+            <button className='flex  items-center justify-center bg-[#007A7A] py-4 px-20 rounded-2xl text-white  text-[16px] hover:bg-[#0a8d8d] mr-3 mb-4 md:mb-0'><MdOutlineKitchen size={25} className="mr-2"/>   Add kitchen recipes</button>
+                 
           </div>
       </div>
     </div>
