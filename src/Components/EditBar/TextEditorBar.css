@@ -9,4 +9,5 @@
     background-color:lightgray;
     padding: 1rem;
     border: 1px solid #ccc;
+    min-height: 300px;
 }

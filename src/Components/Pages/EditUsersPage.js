@@ -1,14 +1,16 @@
 import React from "react";
 import EditHeader from "../Edit/EditHeader";
 import EditPageBody from "../Edit/EditPageBody";
-import AddCoursesModal from "../Courses/AddCoursesModal"
-import AddBaseTypeModal from "../BaseType/AddBaseTypeModal"                                 
+import AddCoursesModal from "../Courses/AddCoursesModal";
+import AddBaseTypeModal from "../BaseType/AddBaseTypeModal";
+import Layout from "../Layout/Layout";
 
 const EditUsersPage = () => {
   return (
     <div>
-      <AddCoursesModal/>
-      <AddBaseTypeModal/>
+      <Layout />
+      <AddCoursesModal />
+      <AddBaseTypeModal />
       <div className="relative md:ml-[60px] ml-0">
         <EditHeader />
         <EditPageBody />

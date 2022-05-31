@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { TrashIcon } from "@heroicons/react/solid";
 import { MdOutlineAddBox } from "react-icons/md";
+import { useContext } from "react";
+import DataContext from "../store/storeContext";
 
-const Ingredient = () => {
-  const [inputList, setInputList] = useState([
-    { quantity: "", unit: "", ingredientAdd: "" },
-    { quantity: "", unit: "", ingredientAdd: "" },
-    { quantity: "", unit: "", ingredientAdd: "" },
-  ]);
+const IngredientBar = () => {
+  
+  const dataCtx = useContext(DataContext)
+  const inputList = dataCtx.inputList
+  const setInputList = dataCtx.setInputList
+
 
   const addHandler = () => {
     setInputList([...inputList, { quantity: "", unit: "", IngredientAdd: "" }]);
@@ -26,7 +28,7 @@ const Ingredient = () => {
     setInputList(list)
   };
 
-  console.log(inputList)
+  // console.log(inputList)
 
   return (
     <div className="bg-red p-4 border-[2px] mb-6">
@@ -38,14 +40,14 @@ const Ingredient = () => {
           >
             <div className=" text-center">
               <p className="text-[16px] font-light mb-4">Quantity{index}</p>
-              <input className="w-[60px]" name="quantity" type="number" value={list.quantity} onChange={(e)=>{
+              <input className="w-[60px] h-9" name="quantity" type="number" value={list.quantity} onChange={(e)=>{
                 changeHandler(index,e)
               }} />
             </div>
 
             <div className=" text-center">
               <p className="text-[16px] font-light mb-4">Units</p>
-              <select name="unit" value={list.unit} onChange={(e)=>{
+              <select className="h-9" name="unit" value={list.unit} onChange={(e)=>{
                 changeHandler(index, e)
               }}>
                 <option value="Bunch">Bunch</option>
@@ -59,7 +61,7 @@ const Ingredient = () => {
 
             <div className=" text-center ">
               <p className="text-[16px] mb-4 font-light">Ingredient add</p>
-              <input type="text" name="ingredientAdd" value={ list.ingredientAdd} onChange={(e)=>{
+              <input className="h-9 w-[200px]" type="text" name="ingredientAdd" value={ list.ingredientAdd} onChange={(e)=>{
                 changeHandler(index,e)
               }} />
             </div>
@@ -89,4 +91,4 @@ const Ingredient = () => {
   );
 };
 
-export default Ingredient;
+export default IngredientBar;

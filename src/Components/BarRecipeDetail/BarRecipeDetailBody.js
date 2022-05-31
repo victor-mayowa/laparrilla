@@ -2,7 +2,7 @@ import React from "react";
 
 
 
-const RecipePageBody = ({user}) => {
+const BarRecipeDetailBody = ({user}) => {
 
   return (
     <div className=" max-w-[1240px] mx-auto bg-white">
@@ -44,4 +44,4 @@ const RecipePageBody = ({user}) => {
   );
 };
 
-export default RecipePageBody;
+export default BarRecipeDetailBody;

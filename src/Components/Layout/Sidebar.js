@@ -8,6 +8,7 @@ import {
   MdPeopleOutline,
   MdOutlineSettings,
 } from "react-icons/md";
+import {BiBookAlt} from "react-icons/bi"
 import DataContext from "../store/storeContext";
 import Logo from "../assests/La-Parrilla-load-Logo.png";
 import { MenuIcon } from "@heroicons/react/solid";
@@ -32,6 +33,11 @@ const Sidebar = () => {
               <MdOutlineAddBox color="#BFBFBF" size={25} />
             </Link>
           </li>
+          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+            <Link to="/allrecipes">
+              <BiBookAlt color="#BFBFBF" size={25} />
+            </Link>
+          </li>
 
           <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
             <Link to="/barrecipes">
@@ -51,7 +57,7 @@ const Sidebar = () => {
             </Link>
           </li>
 
-          <li className="mb-[170px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+          <li className="mb-[100px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
             <Link to="/edit" state={{
              userName: "testing",
              name: "Demo testing",
@@ -63,7 +69,9 @@ const Sidebar = () => {
           </li>
 
           <li className="h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+            <Link to="/">
             <MdLogin color="#BFBFBF" size={25} />
+            </Link>
           </li>
         </ul>
       </div>
@@ -100,6 +108,13 @@ const Sidebar = () => {
             </li>
           </Link>
 
+          <Link to="/allrecipes">
+            <li className="mb-4 h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+              <BiBookAlt color="#BFBFBF" size={25} />
+              <p className="text-[14px] text-[#BFBFBF] ml-2">All recipes</p>
+            </li>
+          </Link>
+
           <Link to="/barrecipes">
             <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
               <MdOutlineLocalBar color="#BFBFBF" size={25} />
@@ -127,17 +142,19 @@ const Sidebar = () => {
              accessLevel: 90,
              email: "demotesting@gmail.com",
           }}>
-          <li className="mb-[170px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+          <li className="mb-[100px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdOutlineSettings color="#BFBFBF" size={25} />
             <p className="text-[14px] text-[#BFBFBF] ml-2">Settings</p>
           </li>
           </Link>
          
-
-          <li className="  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+         <Link to="/">
+         <li className="  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
             <MdLogin color="#BFBFBF" size={25} />
             <p className="text-[14px] text-[#BFBFBF] ml-2">Logout</p>
           </li>
+         </Link>
+         
         </ul>
       </div>
     </div>

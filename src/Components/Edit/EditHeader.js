@@ -15,7 +15,7 @@ const EditHeader = () => {
   return (
         <div className='max-w-[1240px] mx-auto bg-[#D5E7EF] flex p-8 top-0 pt-[153px]'>
             <div>
-              <h1 className='text-4xl mb-5 font-regular font-poppins'>User/Edit</h1>
+              <h1 className='text-4xl mb-5 font-regular font-poppins'>EditUsers</h1>
 
               <div>
 

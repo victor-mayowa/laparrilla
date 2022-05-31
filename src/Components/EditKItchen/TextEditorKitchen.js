@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "./TextEditor.css"
+import "./TextEditorKitchen.css"
 
-const TextEditor = () => {
+const TextEditorBar = () => {
 
   const [editorState, setEditorState] = useState(() => {
     EditorState.createEmpty();
   });
-  
+  console.log(editorState)
   return (
     <div className="mb-6">
       <Editor
@@ -23,4 +23,4 @@ const TextEditor = () => {
   );
 };
 
-export default TextEditor;
+export default TextEditorBar;

@@ -2,7 +2,7 @@ import React from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 
-const Cards = ({ name, comment, user }) => {
+const BarRecipesCards = ({id, name, comment, user }) => {
   return (
     <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
       <div className=" text-center">
@@ -18,7 +18,7 @@ const Cards = ({ name, comment, user }) => {
       <div className="text-center">
         <p className="mb-8">Actions</p>
         <div className="flex justify-center items-center">
-          <Link to="/barRecipes/view" state={{
+          <Link to={`/barrecipes/view/${id}`} state={{
             name:name, user:user
           }}>
             <button className="py-1 px-4 bg-[#0879aa2c] rounded-3xl mr-1 hover:bg-[#0879aa11]">
@@ -40,4 +40,4 @@ const Cards = ({ name, comment, user }) => {
   );
 };
 
-export default Cards;
+export default BarRecipesCards;

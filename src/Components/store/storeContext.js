@@ -1,8 +1,18 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useRef, useState } from "react";
 
 const DataContext = createContext({});
 
 export const DataContextProvider = ({ children }) => {
+
+  ///states from keyBoard components 
+  const [inputs, setInputs] = useState({});
+  const [inputName, setInputName] = useState("UserName")
+  const keyboard = useRef()
+
+  //state for inputs in login page
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState("")
+
 
   const [toggle, setToggle] = useState(true);
 
@@ -27,13 +37,37 @@ export const DataContextProvider = ({ children }) => {
   //state for edit icon in Courses page
   const [editCoursesModal, setEditCoursesModal] = useState(false)
 
-
-
+  //state for input value in Ingredient page
+  const [inputList, setInputList] =  useState([
+    { quantity: "", unit: "", ingredientAdd: "" },
+    { quantity: "", unit: "", ingredientAdd: "" },
+    { quantity: "", unit: "", ingredientAdd: "" },
+  ]);
 
   
   const [userData, setUserData] = useState([])
 
   const [location, setLocation] = useState()
+
+
+  ///FUNCTIONS///////////////////////////////////////////
+
+  //this function is responsible for the inputs and updating the inputs
+   const onChangeInput = event => {
+     const inputVal = event.target.value;
+ 
+     setInputs({
+       ...inputs,
+       [inputName]: inputVal
+     });
+ 
+     keyboard.current.setInput(inputVal);
+   };
+ 
+   const getInputValue = inputName => {
+    return inputs[inputName] || "";
+  };
+
 
    //this function is responsible for toggling the sidebar in BaseTypePage
   const toggleHandler = () => {
@@ -78,6 +112,24 @@ export const DataContextProvider = ({ children }) => {
 
   ///////////////////////////////////////////////////
   const context = {
+    // input:input,
+    // setInput:setInput,
+
+    inputs:inputs,
+    setInputs:setInputs,
+    inputName:inputName,
+    setInputName:setInputName,
+    keyboard:keyboard,
+    
+    onChangeInput:onChangeInput,
+    getInputValue:getInputValue,
+
+  
+    userName:userName,
+    setUserName:setUserName,
+    password:password,
+    setPassword:setPassword,
+
 
       toggle : toggle,
       setToggle : setToggle,
@@ -123,6 +175,9 @@ export const DataContextProvider = ({ children }) => {
       setUserData:setUserData,
       location:location,
       setLocation:setLocation,
+
+      inputList:inputList,
+      setInputList:setInputList
   }
 
   return <DataContext.Provider value={context}>{children}</DataContext.Provider>;

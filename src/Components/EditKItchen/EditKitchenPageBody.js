@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import IngredientBar from "./IngredientBar";
+import IngredientKitchen from "./IngredientKitchen";
+import TextEditorKitchen from "./TextEditorKitchen";
 import { useContext } from "react";
 import DataContext from "../store/storeContext";
-import TextEditorBar from "./TextEditorBar";
 
 
 
-const EditBarPageBody = () => {
+const EditKitchenPageBody = () => {
 
   const [recipesName, setRecipesName] = useState("");
   const [recipesType, setRecipesType] = useState("");
@@ -66,7 +66,7 @@ const EditBarPageBody = () => {
                 setRecipesType(selected);
               }}
             >
-              <option value="bar">Bar</option>
+              <option value="bar">Kitchen</option>
             </select>
           </div>
 
@@ -141,8 +141,8 @@ const EditBarPageBody = () => {
             </select>
           </div>
 
-          <IngredientBar/>
-          <TextEditorBar />
+          <IngredientKitchen/>
+          <TextEditorKitchen />
 
           <div className="mb-6">
             <label className="mr-9 inline-block  w-[150px]">Youtube Link</label>
@@ -171,4 +171,4 @@ const EditBarPageBody = () => {
   );
 };
 
-export default EditBarPageBody;
+export default EditKitchenPageBody;

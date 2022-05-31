@@ -1,8 +1,8 @@
 import React from "react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import Cards from "../ui/Cards";
 import Icons from "../ui/Icons";
 import KitchenData from "../Data/KitchenData";
+import KitchenCards from "./KitchenCards";
 
 const KitchenRecipesBody = () => {
   return (
@@ -14,8 +14,9 @@ const KitchenRecipesBody = () => {
         <div>
         {KitchenData.map((data) => {
             return (
-              <Cards
-                key={data.index}
+              <KitchenCards
+                key={data.id}
+                id={data.id}
                 name={data.name}
                 comment={data.comment}
                 user={data.user}

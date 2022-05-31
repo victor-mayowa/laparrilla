@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AllRecipes from "./Components/Pages/AllRecipes";
 import AddRecipes from "./Components/Pages/AddRecipes";
 import { DataContextProvider } from "./Components/store/storeContext";
-import Layout from "./Components/Layout/Layout";
-import RecipePage from "./Components/Pages/RecipePage";
+// import Layout from "./Components/Layout/Layout";
 import BarRecipes from "./Components/Pages/BarRecipes";
 import KitchenRecipes from "./Components/Pages/KitchenRecipes";
 import UsersPage from "./Components/Pages/UsersPage";
@@ -14,6 +13,12 @@ import BaseTypePage from "./Components/Pages/BaseTypePage";
 import CoursesPage from "./Components/Pages/CoursesPage";
 import AddUsersPage from "./Components/Pages/AddUsersPage";
 import EditBarPage from "./Components/Pages/EditBarPage";
+import EditKItchen from "./Components/Pages/EditKitchenPage";
+import BarRecipeDetailBody from "./Components/Pages/BarRecipeDetailPage";
+import KitchenRecipeDetailPage from "./Components/Pages/KitchenRecipeDetailPage";
+import LoginPage from "./Components/Pages/LoginPage";
+
+
 
 
 function App() {
@@ -21,12 +26,14 @@ function App() {
     <div className="bg-[#B7B8B9] relative">
       <DataContextProvider>
         <Router>
-          <Layout />
           <Routes>
-            <Route path="/" element={<AllRecipes />} />
+            <Route path="/" element={<LoginPage/>} />
+            <Route path="/allrecipes" element={<AllRecipes />} />
             <Route path="/addrecipes" element={<AddRecipes />} />
             <Route path="/editbar" element={<EditBarPage/>}/>
-            <Route path="/recipepage" element={<RecipePage />} />
+            <Route path="editkitchen" element={<EditKItchen/>}/>
+            <Route path="/barrecipes/view/:id" element={<BarRecipeDetailBody/>}/>
+            <Route path="/kitchenrecipes/view/:id" element={<KitchenRecipeDetailPage/>}/>
             <Route path="/barrecipes" element={<BarRecipes />} />
             <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />
             <Route path="/users" element={<UsersPage/>}/>
