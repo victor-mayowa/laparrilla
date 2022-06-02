@@ -1,8 +1,6 @@
 import React from "react";
 import Logo from "../assests/La-Parrilla-load-Logo.png";
-import { MenuIcon } from "@heroicons/react/solid";
 
-import { Link } from "react-router-dom";
 
 const LoginNavbar = () => {
 

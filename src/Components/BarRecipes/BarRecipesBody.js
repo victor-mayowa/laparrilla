@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
 import Icons from "../ui/Icons";
-import BarData from "../Data/BarData";
 import BarRecipesCards from "./BarRecipesCards";
+import DataContext from "../store/storeContext";
 
 const BarRecipesBody = () => {
+  const dataCtx = useContext(DataContext)
+  const barRecipes = dataCtx.barRecipes
   return (
     <div className=" max-w-[1240px] mx-auto bg-white">
       <div className="max-w-[1000px] mx-auto py-4">
@@ -13,7 +15,7 @@ const BarRecipesBody = () => {
         </p>
         <div>
          
-          {BarData.map((data) => {
+          {barRecipes.map((data) => {
             return (
               <BarRecipesCards
                 key={data.id}

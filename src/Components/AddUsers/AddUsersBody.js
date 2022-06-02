@@ -1,6 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+// import DataContext from "../store/storeContext";
+import {useNavigate} from "react-router-dom"
 
 const AddUsersBody = () => {
+  const navigate = useNavigate()
+
+  // const dataCtx = useContext(DataContext)
+  // const userData = dataCtx.userData
+  // const setUserData = dataCtx.setUserData
 
   const [userName, setUserName] = useState("")
   const [name, setName] = useState("")
@@ -12,10 +19,11 @@ const submitHandler = (e)=>{
   const data = {
     userName,
     name,
-    email,
-    lang
+    email
   }
   console.log(data)
+  // setUserData(data)
+  navigate("/users")
 }
   return (
     <div className=" max-w-[1240px] mx-auto bg-white py-6">

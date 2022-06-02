@@ -8,7 +8,7 @@ import {
   MdPeopleOutline,
   MdOutlineSettings,
 } from "react-icons/md";
-import {BiBookAlt} from "react-icons/bi"
+import { BiBookAlt } from "react-icons/bi";
 import DataContext from "../store/storeContext";
 import Logo from "../assests/La-Parrilla-load-Logo.png";
 import { MenuIcon } from "@heroicons/react/solid";
@@ -17,6 +17,7 @@ const Sidebar = () => {
   const dataCtx = useContext(DataContext);
   const toggle = dataCtx.toggle;
   const toggleHandler = dataCtx.toggleHandler;
+  const openModalHandler = dataCtx.openModalHandler
 
   return (
     <div>
@@ -27,54 +28,63 @@ const Sidebar = () => {
             : "hidden"
         }
       >
-        <ul className="flex items-center justify-center flex-col">
-          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/addrecipes">
+        <ul>
+          <Link to="/addrecipes">
+            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <MdOutlineAddBox color="#BFBFBF" size={25} />
-            </Link>
-          </li>
-          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/allrecipes">
+            </li>
+          </Link>
+
+          <Link to="/allrecipes">
+            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <BiBookAlt color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/barrecipes">
+          <Link to="/barrecipes">
+            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <MdOutlineLocalBar color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/kitchenrecipes">
+          <Link to="/kitchenrecipes">
+            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <MdOutlineKitchen color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/users">
+          <Link to="/users">
+            <li className="mb-4  h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <MdPeopleOutline color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+            </li>
+          </Link>
 
-          <li className="mb-[100px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/edit" state={{
-             userName: "testing",
-             name: "Demo testing",
-             accessLevel: "90",
-             email: "demotesting@gmail.com",
-          }}>
-            <MdOutlineSettings color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+          <Link
+            to="/edit"
+            state={{
+              userName: "testing",
+              name: "Demo testing",
+              accessLevel: "90",
+              email: "demotesting@gmail.com",
+            }}
+          >
+            <li className="mb-[100px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+              <MdOutlineSettings color="#BFBFBF" size={25} />
+            </li>
+          </Link>
 
-          <li className="h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
-            <Link to="/">
-            <MdLogin color="#BFBFBF" size={25} />
-            </Link>
-          </li>
+         
+            <li onClick={openModalHandler} className="h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
+              <MdLogin color="#BFBFBF" size={25} />
+            </li>
+         
         </ul>
       </div>
+
+
+
+
+
 
       <div
         className={
@@ -90,7 +100,7 @@ const Sidebar = () => {
           </div>
 
           <div>
-            <Link to="/">
+            <Link to="/allrecipes">
               <img
                 src={Logo}
                 alt="Logo"
@@ -100,61 +110,64 @@ const Sidebar = () => {
             </Link>
           </div>
         </div>
+
         <ul>
           <Link to="/addrecipes">
-            <li className="mb-4 h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+            <li className="mb-4 h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <MdOutlineAddBox color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">Add recipes</p>
             </li>
           </Link>
 
           <Link to="/allrecipes">
-            <li className="mb-4 h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+            <li className="mb-4 h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <BiBookAlt color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">All recipes</p>
             </li>
           </Link>
 
           <Link to="/barrecipes">
-            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <MdOutlineLocalBar color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">Bar recipes</p>
             </li>
           </Link>
 
           <Link to="/kitchenrecipes">
-            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <MdOutlineKitchen color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">Kitchen recipes</p>
             </li>
           </Link>
 
           <Link to="/users">
-            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
+            <li className="mb-4  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <MdPeopleOutline color="#BFBFBF" size={25} />
               <p className="text-[14px] text-[#BFBFBF] ml-2">Users</p>
             </li>
           </Link>
 
-          <Link to="/edit" state={{
-             userName: "testing",
-             name: "Demo testing",
-             accessLevel: 90,
-             email: "demotesting@gmail.com",
-          }}>
-          <li className="mb-[100px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
-            <MdOutlineSettings color="#BFBFBF" size={25} />
-            <p className="text-[14px] text-[#BFBFBF] ml-2">Settings</p>
-          </li>
+          <Link
+            to="/edit"
+            state={{
+              userName: "testing",
+              name: "Demo testing",
+              accessLevel: 90,
+              email: "demotesting@gmail.com",
+            }}
+          >
+            <li className="mb-[100px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
+              <MdOutlineSettings color="#BFBFBF" size={25} />
+              <p className="text-[14px] text-[#BFBFBF] ml-2">Settings</p>
+            </li>
           </Link>
+
          
-         <Link to="/">
-         <li className="  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]">
-            <MdLogin color="#BFBFBF" size={25} />
-            <p className="text-[14px] text-[#BFBFBF] ml-2">Logout</p>
-          </li>
-         </Link>
-         
+            <li  className="  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={openModalHandler}>
+              <MdLogin color="#BFBFBF" size={25} />
+              <p className="text-[14px] text-[#BFBFBF] ml-2">Logout</p>
+            </li>
+        
         </ul>
       </div>
     </div>

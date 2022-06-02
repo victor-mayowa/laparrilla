@@ -3,10 +3,12 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
 import DataContext from "../store/storeContext";
 
-const BarRecipesCards = ({id, name, comment, user }) => {
-  const dataCtx = useContext(DataContext)
+const AllRecipesCard = ({id, name, comment, user }) => {
 
-  const deleteHandler = dataCtx.deleteHandler
+    const dataCtx = useContext(DataContext)
+
+    const deleteHandler = dataCtx.deleteHandler
+
   return (
     <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
       <div className=" text-center">
@@ -44,4 +46,4 @@ const BarRecipesCards = ({id, name, comment, user }) => {
   );
 };
 
-export default BarRecipesCards;
+export default AllRecipesCard;

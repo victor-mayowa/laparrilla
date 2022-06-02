@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import AllRecipes from "./Components/Pages/AllRecipes";
 import AddRecipes from "./Components/Pages/AddRecipes";
 import { DataContextProvider } from "./Components/store/storeContext";
@@ -17,6 +17,8 @@ import EditKItchen from "./Components/Pages/EditKitchenPage";
 import BarRecipeDetailBody from "./Components/Pages/BarRecipeDetailPage";
 import KitchenRecipeDetailPage from "./Components/Pages/KitchenRecipeDetailPage";
 import LoginPage from "./Components/Pages/LoginPage";
+import ProtectedRoutes from "./ProtectedRoutes";
+
 
 
 
@@ -25,25 +27,25 @@ function App() {
   return (
     <div className="bg-[#B7B8B9] relative">
       <DataContextProvider>
-        <Router>
           <Routes>
             <Route path="/" element={<LoginPage/>} />
-            <Route path="/allrecipes" element={<AllRecipes />} />
-            <Route path="/addrecipes" element={<AddRecipes />} />
-            <Route path="/editbar" element={<EditBarPage/>}/>
-            <Route path="editkitchen" element={<EditKItchen/>}/>
-            <Route path="/barrecipes/view/:id" element={<BarRecipeDetailBody/>}/>
-            <Route path="/kitchenrecipes/view/:id" element={<KitchenRecipeDetailPage/>}/>
-            <Route path="/barrecipes" element={<BarRecipes />} />
-            <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />
-            <Route path="/users" element={<UsersPage/>}/>
-            <Route path="/user/view/:id" element={<UserDetailPage/>}/>
-            <Route path="/edit" element={<EditUsersPage/>}/>
-            <Route path="/adduser" element={<AddUsersPage/>}/>
-            <Route path="/basetype" element={<BaseTypePage/>}/>
-            <Route path="/courses" element={<CoursesPage/>}/>
+            <Route element={<ProtectedRoutes/>}>
+                <Route path="/allrecipes" element={<AllRecipes />} />
+                <Route path="/addrecipes" element={<AddRecipes />} />
+                <Route path="/editbar" element={<EditBarPage/>}/>
+                <Route path="editkitchen" element={<EditKItchen/>}/>
+                <Route path="/barrecipes/view/:id" element={<BarRecipeDetailBody/>}/>
+                <Route path="/kitchenrecipes/view/:id" element={<KitchenRecipeDetailPage/>}/>
+                <Route path="/barrecipes" element={<BarRecipes />} />
+                <Route path="/kitchenrecipes" element={<KitchenRecipes/>} />
+                <Route path="/users" element={<UsersPage/>}/>
+                <Route path="/user/view/:id" element={<UserDetailPage/>}/>
+                <Route path="/edit" element={<EditUsersPage/>}/>
+                <Route path="/adduser" element={<AddUsersPage/>}/>
+                <Route path="/basetype" element={<BaseTypePage/>}/>
+                <Route path="/courses" element={<CoursesPage/>}/>
+            </Route>
           </Routes>
-        </Router>
       </DataContextProvider>
     </div>
   );

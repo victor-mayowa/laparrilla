@@ -1,14 +1,14 @@
 import React from "react";
 import UserDetailPageBody from "../UserDetail/UserDetailPageBody";
 import UserDetailHeader from "../UserDetail/UserDetailHeader";
-import UsersModal from "../Users/UsersModal";
+import UsersModal from "../Users/UsersModal"
 import Layout from "../Layout/Layout";
 
 const UserDetailPage = () => {
   return (
     <div>
       <Layout />
-      <UsersModal />
+      <UsersModal/>
       <div className=" md:ml-[60px] ml-0">
         <UserDetailHeader />
         <UserDetailPageBody />

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import { useLocation} from "react-router-dom";
-// import DataContext from "../store/storeContext";
+import DataContext from "../store/storeContext";
 
 const UserPageBody = () => {
 
-  
-  // const dataCtx = useContext(DataContext)
+  const dataCtx = useContext(DataContext)
 
-  // const setLocation = dataCtx.setLocation
-  // const location = dataCtx.location
+  const setData = dataCtx.setData
 
   const locate = useLocation()
+  const www = locate.state
+
+useEffect(()=>{
+  setData(www)
+})
+
+
 
   // setLocation(locate)
   // console.log(location)
@@ -18,6 +23,9 @@ const UserPageBody = () => {
 
 
 const {id, userName, name, accessLevel, email} = locate.state
+
+// console.log(locate)
+
 
   return (
     <div className=" max-w-[1240px] mx-auto bg-white">

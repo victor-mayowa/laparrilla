@@ -4,44 +4,59 @@ import DataContext from "../store/storeContext";
 
 
 const LoginBody = () => {
-
       const navigate = useNavigate()
 
-      const dataCtx = useContext(DataContext)
-      const userName = dataCtx.userName
-      const password = dataCtx.password
-      const setUserName = dataCtx.setUserName
-      const setPassword = dataCtx.setPassword
+      const dataCtx = useContext(DataContext)   
       const inputs = dataCtx.inputs
+      const setInputs = dataCtx.setInputs
+      const inputName = dataCtx.inputName
+      const setInputName = dataCtx.setInputName
+      const keyboard = dataCtx.keyboard
+      const isAuth = dataCtx.isAuth
+      const setIsAuth = dataCtx.setIsAuth
 
-      const onChangeInput = dataCtx.onChangeInput
-     const getInputValue = dataCtx.getInputValue
-     const setInputName = dataCtx.setInputName
+    const onChangeInput = event => {
+      const inputVal = event.target.value;
+      setInputs({
+        ...inputs,
+        [inputName]: inputVal
+      });
+    
+      keyboard.current.setInput(inputVal);
+    };
+    
+    const getInputValue = inputName => {
+     return inputs[inputName] || "";
+    };
 
-      const [show, setShow] = useState(false)
+
+    const [show, setShow] = useState(false)
+
+    
+     const inputsLength =  Object.keys(inputs).length
 
       const submitHandler = (e) =>{
         e.preventDefault()
+       
 
-        console.log(inputs)
-         setUserName(inputs.UserName)
-        setPassword(inputs.Password)
+        if(inputsLength < 2){
+          setShow(true)
+          return( 
+            setTimeout(()=>{
+              setShow(false)
+            },1000)
+          )     
+        }
         
-        // if (userName === "" || password === "" ){
-        //   setShow(true)
-        //   return( 
-        //     setTimeout(()=>{
-        //       setShow(false)
-        //     },1000)
-        //   )
-        // }
+        console.log(inputs)
 
-        const data = {
-          userName,
-          password
+        //for emptying the inputs
+        for(const keys in inputs){
+          delete inputs[keys]
         }
 
-        console.log(data)
+        setIsAuth(true)
+        
         navigate("/allrecipes")
       }
 
@@ -50,7 +65,7 @@ const LoginBody = () => {
 
       <div className="bg-white flex flex-col items-center justify-center shadow-xl rounded-md">
 
-        <h1 className="text-3xl my-10">USER LOGIN</h1>
+        <h1  className="text-3xl my-10">USER LOGIN</h1>
 
         <form onSubmit={submitHandler} className="flex flex-col items-center w-full">
 

@@ -1,14 +1,14 @@
 import React, { useContext, useRef } from "react";
 import DataContext from "../store/storeContext";
 
-const UsersModal = () => {
+const AllRecipesModal = () => {
   const dataCtx = useContext(DataContext);
 
   const showModal = dataCtx.showModal;
 
   const closeModal = dataCtx.closeModal
 
-  const deleteAfterModalHandler = dataCtx.deleteAfterModalHandler
+  const confirmAllRecipeDelete = dataCtx.confirmAllRecipeDelete
 
   const modal = useRef()
 
@@ -31,9 +31,9 @@ const UsersModal = () => {
       <div className="bg-white rounded-lg relative">
           <button onClick={closeModal} className="px-4 py-1 absolute right-[15px] top-[10px]  rounded-lg ">X</button>
         <div className="w-[400px] h-[180px] p-2 flex flex-col justify-center items-center mt-3">
-          <p>Are you sure you want to delete this user?</p>
+          <p>Are you sure you want to delete this?</p>
           <div className="mt-4">
-            <button onClick={deleteAfterModalHandler} className="bg-green-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-green-700 mr-8">
+            <button onClick={confirmAllRecipeDelete} className="bg-green-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-green-700 mr-8">
               Yes
             </button>
             <button onClick={closeModal} className="bg-red-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-red-700 ">
@@ -45,4 +45,4 @@ const UsersModal = () => {
     </div>
   );
 };
-export default UsersModal;
+export default AllRecipesModal;

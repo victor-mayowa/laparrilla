@@ -1,19 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Icons from "../ui/Icons";
 import UsersCard from "./UsersCard";
-import UsersData from "../Data/UsersData";
 import DataContext from "../store/storeContext";
 
 const UsersPageBody = () => {
 
   const dataCtx = useContext(DataContext)
  const userData = dataCtx.userData
- const setUserData = dataCtx.setUserData
  
-
-  useEffect(()=>{
-    setUserData(UsersData)
-  })
+ 
 
   
   return (
@@ -32,8 +27,7 @@ const UsersPageBody = () => {
               />
             );
           })}
-
-          <Icons className="mt-8" />
+    <Icons className="mt-8" />
         </div>
       </div>
     </div>

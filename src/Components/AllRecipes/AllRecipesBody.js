@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import Cards from "../ui/Cards";
+import AllRecipesCard from "./AllRecipesCards";
 import Icons from "../ui/Icons";
-import AllData from "../Data/AllData";
+import DataContext from "../store/storeContext";
 
 const AllRecipesBody = () => {
+  const dataCtx = useContext(DataContext);
+  const allRecipes = dataCtx.allRecipes
   return (
     <div className=" max-w-[1240px] mx-auto bg-white">
       <div className="max-w-[1000px] mx-auto py-4">
@@ -12,10 +14,11 @@ const AllRecipesBody = () => {
           All Recipes <ChevronDownIcon className="w-5 ml-2" />
         </p>
         <div>
-        {AllData.map((data) => {
+        {allRecipes.map((data) => {
             return (
-              <Cards
-                key={data.index}
+              <AllRecipesCard
+                key={data.id}
+                id={data.id}
                 name={data.name}
                 comment={data.comment}
                 user={data.user}
