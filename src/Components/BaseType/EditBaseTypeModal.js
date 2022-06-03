@@ -4,25 +4,24 @@ import { AiOutlineClose } from "react-icons/ai";
 import Draggable from "react-draggable";
 
 const EditBaseType = () => {
-  
   const dataCtx = useContext(DataContext);
 
-  const editBaseTypeModal = dataCtx.editBaseTypeModal;
+  const showEditModal = dataCtx.showEditModal;
 
-  const EditBaseTypeModalHandler = dataCtx.EditBaseTypeModalHandler;
+  const closeEditModalHandler = dataCtx.closeEditModalHandler;
 
   const modal = useRef();
 
   const closeModal = (e) => {
     if (modal.current === e.target) {
-      EditBaseTypeModalHandler();
+      closeEditModalHandler();
     }
   }
 
   const [formInput, setFormInput] = useState("")
 
   const closeButtonHandler = () =>{
-    EditBaseTypeModalHandler();
+    closeEditModalHandler();
   }
   const openButtonHandler = () =>{
     console.log("open")
@@ -38,7 +37,7 @@ const EditBaseType = () => {
     <div
       ref={modal}
       className={
-        editBaseTypeModal
+        showEditModal.show
           ? "h-[100vh] fixed z-50 bg-[rgba(0,0,0,0.64)] w-full flex items-center justify-center"
           : "hidden"
       }
@@ -52,7 +51,7 @@ const EditBaseType = () => {
             <h1 className="font-bold font-poppins">Base Type</h1>
             <AiOutlineClose
               className="cursor-pointer"
-              onClick={EditBaseTypeModalHandler}
+              onClick={closeEditModalHandler}
               size={20}
             />
           </div>

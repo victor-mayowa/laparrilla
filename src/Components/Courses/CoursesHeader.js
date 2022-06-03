@@ -13,7 +13,7 @@ const CoursesHeader = () => {
 
               <div>
 
-                <button onClick={AddCoursesModalHandler } className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]' >Add Courses</button>
+                <button onClick={AddCoursesModalHandler} className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]' >Add Courses</button>
               </div>
             </div>
         </div>

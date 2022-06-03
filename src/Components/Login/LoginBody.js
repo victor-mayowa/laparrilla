@@ -12,7 +12,7 @@ const LoginBody = () => {
       const inputName = dataCtx.inputName
       const setInputName = dataCtx.setInputName
       const keyboard = dataCtx.keyboard
-      const isAuth = dataCtx.isAuth
+      // const isAuth = dataCtx.isAuth
       const setIsAuth = dataCtx.setIsAuth
 
     const onChangeInput = event => {
@@ -37,7 +37,6 @@ const LoginBody = () => {
 
       const submitHandler = (e) =>{
         e.preventDefault()
-       
 
         if(inputsLength < 2){
           setShow(true)

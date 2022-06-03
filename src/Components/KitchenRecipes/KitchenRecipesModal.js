@@ -1,14 +1,14 @@
 import React, { useContext, useRef } from "react";
 import DataContext from "../store/storeContext";
 
-const BarRecipesModal = () => {
+const KitchenRecipesModal = () => {
   const dataCtx = useContext(DataContext);
 
   const showModal = dataCtx.showModal;
 
   const closeModalHandler = dataCtx.closeModalHandler
 
-  const confirmBarRecipeDelete = dataCtx.confirmBarRecipeDelete
+  const confirmKitchenRecipeDelete = dataCtx.confirmKitchenRecipeDelete
 
   const modal = useRef()
 
@@ -33,7 +33,7 @@ const BarRecipesModal = () => {
         <div className="w-[400px] h-[180px] p-2 flex flex-col justify-center items-center mt-3">
           <p>Are you sure you want to delete this Recipes?</p>
           <div className="mt-4">
-            <button onClick={confirmBarRecipeDelete} className="bg-green-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-green-700 mr-8">
+            <button onClick={confirmKitchenRecipeDelete} className="bg-green-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-green-700 mr-8">
               Yes
             </button>
             <button onClick={closeModalHandler} className="bg-red-800 text-white px-4 py-1 rounded-lg cursor-pointer hover:bg-red-700 ">
@@ -45,4 +45,4 @@ const BarRecipesModal = () => {
     </div>
   );
 };
-export default BarRecipesModal;
+export default KitchenRecipesModal;

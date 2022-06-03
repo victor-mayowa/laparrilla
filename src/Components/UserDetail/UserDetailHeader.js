@@ -9,7 +9,7 @@ import DataContext from "../store/storeContext";
 const UserHeader = () => {
   const dataCtx = useContext(DataContext)
 
-  const deleteHandler = dataCtx.deleteHandler
+  const showModalHandler = dataCtx.showModalHandler
   const data = dataCtx.data
   const {id,userName, name, accessLevel, email} = data
 
@@ -27,7 +27,7 @@ const UserHeader = () => {
                 </Link>
                
 
-                <button onClick={() => deleteHandler(id)} className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]'>Delete User</button>
+                <button onClick={() => showModalHandler(id)} className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]'>Delete User</button>
 
                 <Link to="/users">
                 <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white  text-[14px] hover:bg-[#0a8d8d]'>List Users</button>

@@ -9,10 +9,10 @@ const UserPageBody = () => {
   const setData = dataCtx.setData
 
   const locate = useLocation()
-  const www = locate.state
+  const data = locate.state
 
 useEffect(()=>{
-  setData(www)
+  setData(data)
 })
 
 

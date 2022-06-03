@@ -1,31 +1,31 @@
 const CoursesData = [
   {
-    index: 0,
+    id: 1,
     name: "Courses0",
   },
 
   {
-    index: 1,
+    id: 2,
     name: "Courses1",
   },
 
   {
-    index: 2,
+    id: 3,
     name: "Courses2",
   },
 
   {
-    index: 3,
+    id: 4,
     name: "Courses3",
   },
 
   {
-    index: 4,
+    id: 5,
     name: "Courses4",
   },
 
   {
-    index: 5,
+    id: 6,
     name: "Courses5",
   },
 ];

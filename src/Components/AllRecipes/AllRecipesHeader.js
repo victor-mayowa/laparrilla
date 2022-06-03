@@ -3,27 +3,26 @@ import { Link } from 'react-router-dom'
 import DataContext from '../store/storeContext'
 
 
-const BarRecipesHeader = () => {
+const AllRecipesHeader = () => {
+    const dataCtx = useContext(DataContext)
 
-  const dataCtx = useContext(DataContext)
+    const AddCoursesModalHandler = dataCtx.AddCoursesModalHandler
 
-  const AddCoursesModalHandler = dataCtx.AddCoursesModalHandler
+    const AddBaseTypeModalHandler = dataCtx.AddBaseTypeModalHandler;
 
-  const AddBaseTypeModalHandler = dataCtx.AddBaseTypeModalHandler;
+    const showDropDown = dataCtx.showDropDown
 
-  const showDropDown = dataCtx.showDropDown
+    const dropDownHandler = dataCtx.dropDownHandler
 
-  const dropDownHandler = dataCtx.dropDownHandler
-
-
+ 
   return (
         <div className='max-w-[1240px] mx-auto bg-[#D5E7EF] flex p-8 top-0 pt-[153px]'>
             <div>
-              <h1 className='text-4xl mb-5 font-regular font-poppins'>BarRecipes</h1>
+              <h1 className='text-4xl mb-5 font-regular font-poppins'>AllRecipes</h1>
 
               <ul className="flex">
 
-                <Link to="/editbar">
+                <Link to="/addrecipes">
                <button className='bg-[#007A7A] py-2 px-5 rounded-3xl text-white mr-3 text-[14px] hover:bg-[#0a8d8d]' >Add recipes</button> 
                 </Link>
                
@@ -58,4 +57,4 @@ const BarRecipesHeader = () => {
   )
 }
 
-export default BarRecipesHeader
+export default AllRecipesHeader

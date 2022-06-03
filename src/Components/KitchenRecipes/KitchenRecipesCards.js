@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
+import DataContext from "../store/storeContext";
 
-const KitchenCards = ({id, name, comment, user }) => {
+const KitchenRecipesCard = ({id, name, comment, user }) => {
+  const dataCtx = useContext(DataContext)
+
+  const showModalHandler = dataCtx.showModalHandler
   return (
     <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
       <div className=" text-center">
@@ -26,7 +30,7 @@ const KitchenCards = ({id, name, comment, user }) => {
             </button>
           </Link>
           <PencilAltIcon className="w-6 text-[#07335E] cursor-pointer mr-1 hover:text-[#07335eb4]" />
-          <TrashIcon className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
+          <TrashIcon onClick={() => showModalHandler(id)} className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
         </div>
       </div>
 
@@ -40,4 +44,4 @@ const KitchenCards = ({id, name, comment, user }) => {
   );
 };
 
-export default KitchenCards;
+export default KitchenRecipesCard;

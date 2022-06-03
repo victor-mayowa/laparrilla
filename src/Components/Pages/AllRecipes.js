@@ -1,16 +1,20 @@
 import React from "react";
 import AllRecipesBody from "../AllRecipes/AllRecipesBody";
-import Header from "../ui/Header";
 import Layout from "../Layout/Layout";
 import AllRecipesModal from "../AllRecipes/AllRecipesModal";
+import AllRecipesHeader from "../AllRecipes/AllRecipesHeader";
+import AddCoursesModal from "../Courses/AddCoursesModal";
+import AddBaseTypeModal from "../BaseType/AddBaseTypeModal";
 
 const AllRecipes = () => {
   return (
     <div>
       <Layout/>
       <AllRecipesModal/>
+      <AddCoursesModal/>
+      <AddBaseTypeModal/>
       <div className="relative md:ml-[60px] ml-0">
-        <Header name="All recipes" buttons="" />
+        <AllRecipesHeader/>
         <AllRecipesBody />
       </div>
     </div>

@@ -3,13 +3,13 @@ import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import DataContext from "../store/storeContext";
 
 
-const CoursesCard = ({ name }) => {
+const CoursesCard = ({id, name }) => {
   
   const dataCtx = useContext(DataContext)
 
-  const DeleteCoursesModalHandler= dataCtx.DeleteCoursesModalHandler
+  const showModalHandler = dataCtx.showModalHandler
 
-  const EditCoursesModalHandler = dataCtx.EditCoursesModalHandler
+  const showEditModalHandler = dataCtx.showEditModalHandler
 
   return (
     <div className="bg-[#CEDBE1] flex max-w-[700px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-5">
@@ -24,8 +24,8 @@ const CoursesCard = ({ name }) => {
       <div className="text-center">
         <p className="mb-8">Actions</p>
         <div className="flex justify-center items-center">  
-          <PencilAltIcon  onClick={EditCoursesModalHandler} className="w-5 text-[#07335E] cursor-pointer mr-2 hover:text-[#07335eb4]" />
-          <TrashIcon onClick={DeleteCoursesModalHandler} className="w-5 text-[#8A1818] cursor-pointer hover:text-[#8a1818d7]" />
+          <PencilAltIcon  onClick={() => showEditModalHandler(id)} className="w-5 text-[#07335E] cursor-pointer mr-2 hover:text-[#07335eb4]" />
+          <TrashIcon onClick={() => showModalHandler(id)} className="w-5 text-[#8A1818] cursor-pointer hover:text-[#8a1818d7]" />
         </div>
       </div>
 

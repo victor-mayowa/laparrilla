@@ -8,7 +8,7 @@ const Cards = ({ id, userName, name, accessLevel, email }) => {
 
   const dataCtx = useContext(DataContext)
 
-  const deleteHandler = dataCtx.deleteHandler
+  const showModalHandler = dataCtx.showModalHandler
 
 
 
@@ -51,7 +51,7 @@ const Cards = ({ id, userName, name, accessLevel, email }) => {
             <PencilAltIcon className="w-6 text-[#07335E] cursor-pointer mr-1 hover:text-[#07335eb4]" />
             </Link>
 
-            <TrashIcon onClick={() => deleteHandler(id)}  className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
+            <TrashIcon onClick={() => showModalHandler(id)}  className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
            
 
           </div>

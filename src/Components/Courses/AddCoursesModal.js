@@ -10,12 +10,18 @@ const AddCoursesModal = () => {
     const addCoursesModal = dataCtx.addCoursesModal;
   
     const AddCoursesModalHandler = dataCtx.AddCoursesModalHandler;
+
+
+    
+    const dropDownHandler = dataCtx.dropDownHandler
+
   
     const modal = useRef();
   
     const closeModal = (e) => {
       if (modal.current === e.target) {
         AddCoursesModalHandler();
+        dropDownHandler()
       }
     }
   
@@ -23,6 +29,8 @@ const AddCoursesModal = () => {
   
     const closeButtonHandler = () =>{
       AddCoursesModalHandler();
+      dropDownHandler()
+
     }
     const openButtonHandler = () =>{
       console.log("open")
@@ -38,7 +46,7 @@ const AddCoursesModal = () => {
       <div
         ref={modal}
         className={
-            addCoursesModal
+            addCoursesModal.show
             ? "h-[100vh] fixed z-50 bg-[rgba(0,0,0,0.64)] w-full flex items-center justify-center"
             : "hidden"
         }

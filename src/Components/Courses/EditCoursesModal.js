@@ -7,22 +7,22 @@ import Draggable from "react-draggable";
 const EditCoursesModal = () => {
     const dataCtx = useContext(DataContext);
 
-    const editCoursesModal = dataCtx.editCoursesModal;
+    const showEditModal = dataCtx.showEditModal;
   
-    const EditCoursesModalHandler = dataCtx.EditCoursesModalHandler;
+    const closeEditModalHandler = dataCtx.closeEditModalHandler;
   
     const modal = useRef();
   
     const closeModal = (e) => {
       if (modal.current === e.target) {
-        EditCoursesModalHandler();
+        closeEditModalHandler();
       }
     }
   
     const [formInput, setFormInput] = useState("")
   
     const closeButtonHandler = () =>{
-      EditCoursesModalHandler();
+      closeEditModalHandler();
     }
     const openButtonHandler = () =>{
       console.log("open")
@@ -38,7 +38,7 @@ const EditCoursesModal = () => {
       <div
         ref={modal}
         className={
-          editCoursesModal
+          showEditModal.show
             ? "h-[100vh] fixed z-50 bg-[rgba(0,0,0,0.64)] w-full flex items-center justify-center"
             : "hidden"
         }
@@ -52,7 +52,7 @@ const EditCoursesModal = () => {
               <h1 className="font-bold font-poppins">Courses</h1>
               <AiOutlineClose
                 className="cursor-pointer"
-                onClick={EditCoursesModalHandler}
+                onClick={closeEditModalHandler}
                 size={20}
               />
             </div>

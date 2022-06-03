@@ -11,11 +11,14 @@ const AddBaseTypeModal = () => {
 
   const AddBaseTypeModalHandler = dataCtx.AddBaseTypeModalHandler;
 
+  const dropDownHandler = dataCtx.dropDownHandler
+
   const modal = useRef();
 
   const closeModal = (e) => {
     if (modal.current === e.target) {
       AddBaseTypeModalHandler();
+      dropDownHandler()
     }
   }
 
@@ -23,6 +26,7 @@ const AddBaseTypeModal = () => {
 
   const closeButtonHandler = () =>{
     AddBaseTypeModalHandler();
+    dropDownHandler()
   }
   const openButtonHandler = () =>{
     console.log("open")
@@ -38,7 +42,7 @@ const AddBaseTypeModal = () => {
     <div
       ref={modal}
       className={
-        addBaseTypeModal
+        addBaseTypeModal.show
           ? "h-[100vh] fixed z-50 bg-[rgba(0,0,0,0.64)] w-full flex items-center justify-center"
           : "hidden"
       }

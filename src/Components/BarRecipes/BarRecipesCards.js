@@ -6,7 +6,7 @@ import DataContext from "../store/storeContext";
 const BarRecipesCards = ({id, name, comment, user }) => {
   const dataCtx = useContext(DataContext)
 
-  const deleteHandler = dataCtx.deleteHandler
+  const showModalHandler = dataCtx.showModalHandler
   return (
     <div className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8">
       <div className=" text-center">
@@ -30,7 +30,7 @@ const BarRecipesCards = ({id, name, comment, user }) => {
             </button>
           </Link>
           <PencilAltIcon className="w-6 text-[#07335E] cursor-pointer mr-1 hover:text-[#07335eb4]" />
-          <TrashIcon onClick={() => deleteHandler(id)} className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
+          <TrashIcon onClick={() => showModalHandler(id)} className="w-6 text-[#8A1818] cursor-pointer mr-1 hover:text-[#8a1818d7]" />
         </div>
       </div>
 
