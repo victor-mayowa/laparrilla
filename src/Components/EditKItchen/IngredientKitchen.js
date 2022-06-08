@@ -4,42 +4,42 @@ import { MdOutlineAddBox } from "react-icons/md";
 import { useContext } from "react";
 import DataContext from "../store/storeContext";
 
-const IngredientBar = () => {
+const IngredientKitchen = () => {
   
   const dataCtx = useContext(DataContext)
-  const inputList = dataCtx.inputList
-  const setInputList = dataCtx.setInputList
+  const kitchenInputList = dataCtx.kitchenInputList
+  const setKitchenInputList = dataCtx.setKitchenInputList
 
 
   const addHandler = () => {
-    setInputList([...inputList, { quantity: "", unit: "", IngredientAdd: "" }]);
+    setKitchenInputList([...kitchenInputList, { quantity: "", unit: "", IngredientAdd: "" }]);
   };
 
   const deleteHandler = (index) => {
-    const list = [...inputList];
+    const list = [...kitchenInputList];
     list.splice(index, 1);
-    setInputList(list);
+    setKitchenInputList(list);
   };
 
   const changeHandler = (index, e) => {
     const {value, name} = e.target
-    const list = [...inputList]
+    const list = [...kitchenInputList]
     list[index][name] = value
-    setInputList(list)
+    setKitchenInputList(list)
   };
 
   // console.log(inputList)
 
   return (
     <div className="bg-red p-4 border-[2px] mb-6">
-      {inputList.map((list, index) => {
+      {kitchenInputList.map((list, index) => {
         return (
           <div
             key={index}
             className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8"
           >
             <div className=" text-center">
-              <p className="text-[16px] font-light mb-4">Quantity{index}</p>
+              <p className="text-[16px] font-light mb-4">Quantity</p>
               <input className="w-[60px] h-9" name="quantity" type="number" value={list.quantity} onChange={(e)=>{
                 changeHandler(index,e)
               }} />
@@ -50,18 +50,20 @@ const IngredientBar = () => {
               <select className="h-9" name="unit" value={list.unit} onChange={(e)=>{
                 changeHandler(index, e)
               }}>
+                <option value="">Select a unit</option>
                 <option value="Bunch">Bunch</option>
                 <option value="Can">Can</option>
                 <option value="Cartoon">Cartoon</option>
                 <option value="Centigram">Centigram</option>
                 <option value="Centiliters">Centiliters</option>
                 <option value="Clove">Clove</option>
+                <option value="Kilogram">Kilogram</option>
               </select>
             </div>
 
             <div className=" text-center ">
               <p className="text-[16px] mb-4 font-light">Ingredient add</p>
-              <input className="h-9 w-[200px]" type="text" name="ingredientAdd" value={ list.ingredientAdd} onChange={(e)=>{
+              <input className="h-9 w-[200px]" type="text" name="ingredientAdd" value={ list.ingredientAdd ?? ""}  onChange={(e)=>{
                 changeHandler(index,e)
               }} />
             </div>
@@ -69,7 +71,7 @@ const IngredientBar = () => {
             <div className="text-center ">
               <p className="text-[16px] mb-4  font-light">Actions</p>
               <div className="flex justify-center items-center">
-                {inputList.length - 1 === index ? (
+                {kitchenInputList.length - 1 === index ? (
                   <MdOutlineAddBox
                     onClick={addHandler}
                     size={22}
@@ -91,4 +93,4 @@ const IngredientBar = () => {
   );
 };
 
-export default IngredientBar;
+export default IngredientKitchen;

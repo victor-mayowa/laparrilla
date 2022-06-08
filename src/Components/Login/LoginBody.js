@@ -38,21 +38,21 @@ const LoginBody = () => {
       const submitHandler = (e) =>{
         e.preventDefault()
 
-        if(inputsLength < 2){
-          setShow(true)
-          return( 
-            setTimeout(()=>{
-              setShow(false)
-            },1000)
-          )     
-        }
+        // if(inputsLength < 2){
+        //   setShow(true)
+        //   return( 
+        //     setTimeout(()=>{
+        //       setShow(false)
+        //     },1000)
+        //   )     
+        // }
         
-        console.log(inputs)
+        // console.log(inputs)
 
-        //for emptying the inputs
-        for(const keys in inputs){
-          delete inputs[keys]
-        }
+        // //for emptying the inputs
+        // for(const keys in inputs){
+        //   delete inputs[keys]
+        // }
 
         setIsAuth(true)
         

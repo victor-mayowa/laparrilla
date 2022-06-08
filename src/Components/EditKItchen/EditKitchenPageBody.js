@@ -1,23 +1,33 @@
 import React, { useState } from "react";
 import IngredientKitchen from "./IngredientKitchen";
-import TextEditorKitchen from "./TextEditorKitchen";
 import { useContext } from "react";
 import DataContext from "../store/storeContext";
-
-
+import TextEditorKitchen from "./TextEditorKitchen";
+import { convertToRaw } from "draft-js";
 
 const EditKitchenPageBody = () => {
+  const recipesTypes = ["kitchen"];
+  const systems = ["Us", "Metric"];
+  const courses = ["Salsas", "Carnes", "Sides", "Frijoles", "Otro", "Fritos"];
+  const baseTypes = ["Beef", "Bread", "Egg", "Fruit", "Grain", "Lamb", "other"];
 
   const [recipesName, setRecipesName] = useState("");
-  const [recipesType, setRecipesType] = useState("");
-  const [drinkType, setDrinkType] = useState("");
+  const [recipesType, setRecipesType] = useState("kitchen");
   const [comments, setComments] = useState("");
   const [file, setFile] = useState("");
   const [caption, setCaption] = useState("");
-  const [system, setSystem] = useState("");
+  const [system, setSystem] = useState("Metric");
+  const [course, setCourse] = useState("Salsas");
+  const [baseType, setBaseType] = useState("Beef");
+  const [servingStyle, setServingStyle] = useState("");
 
-  const dataCtx = useContext(DataContext)
-  const inputList = dataCtx.inputList
+  const dataCtx = useContext(DataContext);
+  const barInputList = dataCtx.barInputList;
+  const editorState = dataCtx.editorState
+  const kitchenEditorData = 
+    convertToRaw(editorState.getCurrentContent()).blocks
+  // const data = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
+
   const [youtube, setYoutube] = useState("");
 
   const submitHandler = (e) => {
@@ -25,13 +35,16 @@ const EditKitchenPageBody = () => {
     const data = {
       recipesName,
       recipesType,
-      drinkType,
       comments,
+      course,
+      baseType,
+      servingStyle,
       file,
       caption,
       system,
-      inputList,
-      youtube
+      barInputList,
+      kitchenEditorData,
+      youtube,
     };
     console.log(data);
   };
@@ -48,7 +61,7 @@ const EditKitchenPageBody = () => {
             <input
               className="py-2 pl-2 w-[400px] border-[1px] border-slate-600 rounded-sm"
               type="text"
-              placeholder="enter username"
+              placeholder="enter name"
               value={recipesName}
               onChange={(e) => {
                 setRecipesName(e.target.value);
@@ -61,31 +74,15 @@ const EditKitchenPageBody = () => {
             <select
               className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
               value={recipesType}
-              onChange={(e) => {
-                const selected = e.target.value;
-                setRecipesType(selected);
-              }}
+              onChange={(e) =>
+                setRecipesType(recipesTypes[e.target.selectedIndex])
+              }
             >
-              <option value="bar">Kitchen</option>
-            </select>
-          </div>
-
-          <div className="mb-6">
-            <label className="mr-9 inline-block w-[150px]">Drink Type</label>
-            <select
-              className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
-              value={drinkType}
-              onChange={(e) => {
-                const selected = e.target.value;
-                setDrinkType(selected);
-              }}
-            >
-              <option value="Bulk">Bulk</option>
-              <option value="Margaritas">Margaritas</option>
-              <option value="Martinis">Martinis</option>
-              <option value="Mixed Drinks">Mixed Drinks</option>
-              <option value="Mojito">Mojito</option>
-              <option value="shooters">shooters</option>
+              {recipesTypes.map((type) => (
+                <option key={type} value={type}>
+                  {type}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -101,10 +98,54 @@ const EditKitchenPageBody = () => {
             ></textarea>
           </div>
 
+          <div className="mb-6">
+            <label className="mr-9 inline-block w-[150px]">Courses</label>
+            <select
+              className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
+              value={course}
+              onChange={(e) => setCourse(courses[e.target.selectedIndex])}
+            >
+              {courses.map((course) => (
+                <option key={course} value={course}>
+                  {course}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-6">
+            <label className="mr-9 inline-block w-[150px]">BaseType</label>
+            <select
+              className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
+              value={baseType}
+              onChange={(e) => setBaseType(baseTypes[e.target.selectedIndex])}
+            >
+              {baseTypes.map((baseType) => (
+                <option key={baseType} value={baseType}>
+                  {baseType}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-6">
+            <label className="mr-9 inline-block  w-[150px]">Serving size</label>
+            <input
+              className="py-6 pl-2 w-[150px] border-[1px] border-slate-600 rounded-sm"
+              type="number"
+              value={servingStyle}
+              onChange={(e) => {
+                setServingStyle(e.target.value);
+              }}
+              inputMode="numeric"
+            />
+          </div>
+
           <div className="py-6 px-2 border-[1px] border-slate-500 my-6">
             <div className="mb-6 ">
+            <label className="mr-9 inline-block  w-[150px]">Add Utensil</label>
               <input
-              className="cursor-pointer"
+                className="cursor-pointer"
                 type="file"
                 value={file}
                 onChange={(e) => {
@@ -131,17 +172,17 @@ const EditKitchenPageBody = () => {
             <select
               className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
               value={system}
-              onChange={(e) => {
-                const selected = e.target.value;
-                setSystem(selected);
-              }}
+              onChange={(e) => setSystem(systems[e.target.selectedIndex])}
             >
-              <option value="US">Us</option>
-              <option value="Metric">Metric</option>
+              {systems.map((system) => (
+                <option key={system} value={system}>
+                  {system}
+                </option>
+              ))}
             </select>
           </div>
 
-          <IngredientKitchen/>
+          <IngredientKitchen />
           <TextEditorKitchen />
 
           <div className="mb-6">

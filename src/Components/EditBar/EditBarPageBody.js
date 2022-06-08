@@ -3,21 +3,36 @@ import IngredientBar from "./IngredientBar";
 import { useContext } from "react";
 import DataContext from "../store/storeContext";
 import TextEditorBar from "./TextEditorBar";
+import { convertToRaw } from "draft-js";
+
+
+
 
 
 
 const EditBarPageBody = () => {
+  
+ const recipesTypes = ["bar"]
+ const drinkTypes = ["Bulk", "Margaritas","Martinis", "Mixed Drinks", "Mojito", "shooters"]
+ const systems = ["Us", "Metric","gggg"]
 
   const [recipesName, setRecipesName] = useState("");
-  const [recipesType, setRecipesType] = useState("");
-  const [drinkType, setDrinkType] = useState("");
+  const [recipesType, setRecipesType] = useState("bar"
+  );
+  const [drinkType, setDrinkType] = useState("Bulk");
   const [comments, setComments] = useState("");
   const [file, setFile] = useState("");
   const [caption, setCaption] = useState("");
-  const [system, setSystem] = useState("");
+  const [system, setSystem] = useState("Us");
 
   const dataCtx = useContext(DataContext)
-  const inputList = dataCtx.inputList
+
+  const barInputList = dataCtx.barInputList
+
+  const editorState = dataCtx.editorState
+
+  const editorStateData = convertToRaw(editorState.getCurrentContent()).blocks
+
   const [youtube, setYoutube] = useState("");
 
   const submitHandler = (e) => {
@@ -30,7 +45,8 @@ const EditBarPageBody = () => {
       file,
       caption,
       system,
-      inputList,
+      barInputList,
+      editorStateData,
       youtube
     };
     console.log(data);
@@ -43,6 +59,7 @@ const EditBarPageBody = () => {
           className=" max-w-[800px] flex flex-col pl-4"
           onSubmit={submitHandler}
         >
+ 
           <div className="mb-6">
             <label className="mr-9 inline-block  w-[150px]">Name</label>
             <input
@@ -56,18 +73,31 @@ const EditBarPageBody = () => {
             />
           </div>
 
-          <div className="mb-6">
+        <div className="mb-6">
             <label className="mr-9 inline-block w-[150px]">Recipe Type</label>
-            <select
+         <select
+          className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
+        value={recipesType}
+        onChange={e => setRecipesType(recipesTypes[e.target.selectedIndex])}
+      >
+        {recipesTypes.map(type => (
+          <option key={type} value={type}>{type}</option>
+        ))}
+      </select>
+
+    {/* <select
               className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
               value={recipesType}
+              // name="Bar"
+              // id="Bar"
               onChange={(e) => {
-                const selected = e.target.value;
-                setRecipesType(selected);
+                // const selected = e.target.value;
+                setRecipesType(e.target.value);
               }}
             >
-              <option value="bar">Bar</option>
-            </select>
+              <option value="Bar">Bar</option>
+            </select> */}
+
           </div>
 
           <div className="mb-6">
@@ -75,17 +105,11 @@ const EditBarPageBody = () => {
             <select
               className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
               value={drinkType}
-              onChange={(e) => {
-                const selected = e.target.value;
-                setDrinkType(selected);
-              }}
+              onChange={e=>setDrinkType(drinkTypes[e.target.selectedIndex])}
             >
-              <option value="Bulk">Bulk</option>
-              <option value="Margaritas">Margaritas</option>
-              <option value="Martinis">Martinis</option>
-              <option value="Mixed Drinks">Mixed Drinks</option>
-              <option value="Mojito">Mojito</option>
-              <option value="shooters">shooters</option>
+              {drinkTypes.map(type =>(
+                <option key={type} value={type}>{type}</option>
+              ))}
             </select>
           </div>
 
@@ -131,18 +155,17 @@ const EditBarPageBody = () => {
             <select
               className="py-1 pl-2 w-[100px] border-[1px] border-slate-600 rounded-lg"
               value={system}
-              onChange={(e) => {
-                const selected = e.target.value;
-                setSystem(selected);
-              }}
+              onChange={e=>setSystem(systems[e.target.selectedIndex])
+              }
             >
-              <option value="US">Us</option>
-              <option value="Metric">Metric</option>
+            {systems.map(system =>(
+              <option key={system} value={system}>{system}</option>
+            ))}
             </select>
           </div>
 
           <IngredientBar/>
-          <TextEditorBar />
+          <TextEditorBar  />
 
           <div className="mb-6">
             <label className="mr-9 inline-block  w-[150px]">Youtube Link</label>

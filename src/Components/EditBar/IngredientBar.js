@@ -7,39 +7,39 @@ import DataContext from "../store/storeContext";
 const IngredientBar = () => {
   
   const dataCtx = useContext(DataContext)
-  const inputList = dataCtx.inputList
-  const setInputList = dataCtx.setInputList
+  const barInputList = dataCtx.barInputList
+  const setBarInputList = dataCtx.setBarInputList
 
 
   const addHandler = () => {
-    setInputList([...inputList, { quantity: "", unit: "", IngredientAdd: "" }]);
+    setBarInputList([...barInputList, { quantity: "", unit: "", IngredientAdd: "" }]);
   };
 
   const deleteHandler = (index) => {
-    const list = [...inputList];
+    const list = [...barInputList];
     list.splice(index, 1);
-    setInputList(list);
+    setBarInputList(list);
   };
 
   const changeHandler = (index, e) => {
     const {value, name} = e.target
-    const list = [...inputList]
+    const list = [...barInputList]
     list[index][name] = value
-    setInputList(list)
+    setBarInputList(list)
   };
 
   // console.log(inputList)
 
   return (
     <div className="bg-red p-4 border-[2px] mb-6">
-      {inputList.map((list, index) => {
+      {barInputList.map((list, index) => {
         return (
           <div
             key={index}
             className="bg-[#CEDBE1] flex max-w-[1000px] justify-between items-center mx-auto px-10 py-5 shadow-lg mb-8"
           >
             <div className=" text-center">
-              <p className="text-[16px] font-light mb-4">Quantity{index}</p>
+            <p className="text-[16px] font-light mb-4">Quantity</p>
               <input className="w-[60px] h-9" name="quantity" type="number" value={list.quantity} onChange={(e)=>{
                 changeHandler(index,e)
               }} />
@@ -50,6 +50,7 @@ const IngredientBar = () => {
               <select className="h-9" name="unit" value={list.unit} onChange={(e)=>{
                 changeHandler(index, e)
               }}>
+                <option value="">Select a unit</option>
                 <option value="Bunch">Bunch</option>
                 <option value="Can">Can</option>
                 <option value="Cartoon">Cartoon</option>
@@ -61,7 +62,7 @@ const IngredientBar = () => {
 
             <div className=" text-center ">
               <p className="text-[16px] mb-4 font-light">Ingredient add</p>
-              <input className="h-9 w-[200px]" type="text" name="ingredientAdd" value={ list.ingredientAdd} onChange={(e)=>{
+              <input className="h-9 w-[200px]" type="text" name="ingredientAdd" value={ list.ingredientAdd ?? ""} onChange={(e)=>{
                 changeHandler(index,e)
               }} />
             </div>
@@ -69,7 +70,7 @@ const IngredientBar = () => {
             <div className="text-center ">
               <p className="text-[16px] mb-4  font-light">Actions</p>
               <div className="flex justify-center items-center">
-                {inputList.length - 1 === index ? (
+                {barInputList.length - 1 === index ? (
                   <MdOutlineAddBox
                     onClick={addHandler}
                     size={22}

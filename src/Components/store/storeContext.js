@@ -6,18 +6,27 @@ import KitchenData from "../Data/KitchenData";
 import CoursesData from "../Data/CoursesData";
 import BaseTypeData from "../Data/BaseTypeData";
 import { useNavigate } from "react-router-dom";
+import { EditorState } from "draft-js";
 
 const DataContext = createContext({});
 
 export const DataContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
-///MORE ACTION DROP DOWN//////////////////////////////
-  const [showDropDown, setShowDropDown] = useState(false)
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
 
-  const dropDownHandler = () =>{
-    setShowDropDown(!showDropDown)
-  }
+  const [kitchenEditorState, setKitchenEditorState] = useState(() => {
+    EditorState.createEmpty();
+  });
+
+  ///MORE ACTION DROP DOWN//////////////////////////////
+  const [showDropDown, setShowDropDown] = useState(false);
+
+  const dropDownHandler = () => {
+    setShowDropDown(!showDropDown);
+  };
 
   ///Auth/////////////////////////////////////////////////////////
   const [isAuth, setIsAuth] = useState(false);
@@ -219,20 +228,27 @@ export const DataContextProvider = ({ children }) => {
   //////////////////////////////////////////////////////////////
 
   //state for input value in Ingredient page
-  const [inputList, setInputList] = useState([
+  const [barInputList, setBarInputList] = useState([
     { quantity: "", unit: "", ingredientAdd: "" },
-    { quantity: "", unit: "", ingredientAdd: "" },
+  ]);
+
+  const [kitchenInputList, setKitchenInputList] = useState([
     { quantity: "", unit: "", ingredientAdd: "" },
   ]);
 
   //CONTEXT/////////////////////////////////////////////////
 
   const context = {
+    editorState: editorState,
+    setEditorState: setEditorState,
 
-///MORE ACTION DROP DOWN//////////////////////////////
-    showDropDown:showDropDown,
-    setShowDropDown:setShowDropDown,
-    dropDownHandler:dropDownHandler,
+    kitchenEditorState: kitchenEditorState,
+    setKitchenEditorState: setKitchenEditorState,
+
+    ///MORE ACTION DROP DOWN//////////////////////////////
+    showDropDown: showDropDown,
+    setShowDropDown: setShowDropDown,
+    dropDownHandler: dropDownHandler,
 
     data: data,
     setData: setData,
@@ -316,8 +332,11 @@ export const DataContextProvider = ({ children }) => {
     closeEditModalHandler: closeEditModalHandler,
     /////////////////////////////
 
-    inputList: inputList,
-    setInputList: setInputList,
+    barInputList: barInputList,
+    setBarInputList: setBarInputList,
+
+    kitchenInputList: kitchenInputList,
+    setKitchenInputList: setKitchenInputList,
   };
 
   return (
