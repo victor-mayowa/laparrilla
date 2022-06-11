@@ -1,26 +1,19 @@
-import React, { useContext } from "react";
-// import { EditorState } from "draft-js";
+import React from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./TextEditorKitchen.css"
-import { convertToRaw } from "draft-js";
-import DataContext from "../store/storeContext";
 
-const TextEditorBar = () => {
-  const dataCtx = useContext(DataContext)
-
-  const editorState = dataCtx.editorState
-
-  const setEditorState = dataCtx.setEditorState
-
-    // const editorStateData = 
-    // convertToRaw(editorState.getCurrentContent()).blocks
-
+const TextEditorBar = (props) => {
+  const kitchenEditorState = props.kitchenEditorState
+  const setKitchenEditorState = props.setKitchenEditorState
+  const editorContent = props.editorContent
+  
   return (
     <div className="mb-6">
       <Editor
-        editorState={editorState}
-        onEditorStateChange={setEditorState}
+        editorState={kitchenEditorState}
+        onEditorStateChange={setKitchenEditorState}
+        contentState={editorContent} 
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"

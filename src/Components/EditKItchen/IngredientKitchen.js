@@ -11,11 +11,13 @@ const IngredientKitchen = () => {
   const setKitchenInputList = dataCtx.setKitchenInputList
 
 
-  const addHandler = () => {
+  const addHandler = (index) => {
+    console.log(index)
     setKitchenInputList([...kitchenInputList, { quantity: "", unit: "", IngredientAdd: "" }]);
   };
 
   const deleteHandler = (index) => {
+    console.log(index)
     const list = [...kitchenInputList];
     list.splice(index, 1);
     setKitchenInputList(list);
@@ -73,7 +75,7 @@ const IngredientKitchen = () => {
               <div className="flex justify-center items-center">
                 {kitchenInputList.length - 1 === index ? (
                   <MdOutlineAddBox
-                    onClick={addHandler}
+                    onClick={()=> addHandler(index)}
                     size={22}
                     className="text-[#07335E] cursor-pointer hover:text-[#07335eb4]"
                   />
@@ -86,6 +88,7 @@ const IngredientKitchen = () => {
                 )}
               </div>
             </div>
+            
           </div>
         );
       })}

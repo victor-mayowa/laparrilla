@@ -4,35 +4,51 @@ import { useContext } from "react";
 import DataContext from "../store/storeContext";
 import TextEditorBar from "./TextEditorBar";
 import { convertToRaw } from "draft-js";
+import { useNavigate } from "react-router-dom";
 
-
-
-
-
+import { EditorState } from "draft-js";
 
 const EditBarPageBody = () => {
-  
+  const navigate = useNavigate()
+
+  const content = {
+    entityMap: {},
+    blocks:[
+      { 
+        key: "",
+        text: "",
+        type:"",
+        depth:0,
+        inlineStyleRanges:[],
+        entityRanges: [],
+        data: {}
+      }
+    ]
+  };
+
+
+
+
+
+
+  const dataCtx = useContext(DataContext)
  const recipesTypes = ["bar"]
  const drinkTypes = ["Bulk", "Margaritas","Martinis", "Mixed Drinks", "Mojito", "shooters"]
  const systems = ["Us", "Metric","gggg"]
 
+ const [editorContent, setEditorContent] = useState(content);
+
+  const [barEditorState, setBarEditorState] = useState(() => EditorState.createEmpty());
+  
   const [recipesName, setRecipesName] = useState("");
-  const [recipesType, setRecipesType] = useState("bar"
-  );
+  const [recipesType, setRecipesType] = useState("bar");
   const [drinkType, setDrinkType] = useState("Bulk");
   const [comments, setComments] = useState("");
   const [file, setFile] = useState("");
   const [caption, setCaption] = useState("");
   const [system, setSystem] = useState("Us");
-
-  const dataCtx = useContext(DataContext)
-
   const barInputList = dataCtx.barInputList
-
-  const editorState = dataCtx.editorState
-
-  const editorStateData = convertToRaw(editorState.getCurrentContent()).blocks
-
+  const barEditorStateData = convertToRaw(barEditorState.getCurrentContent())
   const [youtube, setYoutube] = useState("");
 
   const submitHandler = (e) => {
@@ -46,10 +62,18 @@ const EditBarPageBody = () => {
       caption,
       system,
       barInputList,
-      editorStateData,
+      barEditorStateData,
       youtube
     };
     console.log(data);
+    setRecipesName("")
+    setComments("")
+    setFile("")
+    setCaption("")
+    setYoutube("")
+    setEditorContent(content)
+
+    navigate("/barrecipes")
   };
 
   return (
@@ -165,7 +189,7 @@ const EditBarPageBody = () => {
           </div>
 
           <IngredientBar/>
-          <TextEditorBar  />
+          <TextEditorBar barEditorState={barEditorState} setBarEditorState={setBarEditorState} editorContent={editorContent}  />
 
           <div className="mb-6">
             <label className="mr-9 inline-block  w-[150px]">Youtube Link</label>

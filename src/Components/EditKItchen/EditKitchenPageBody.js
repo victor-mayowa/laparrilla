@@ -3,13 +3,39 @@ import IngredientKitchen from "./IngredientKitchen";
 import { useContext } from "react";
 import DataContext from "../store/storeContext";
 import TextEditorKitchen from "./TextEditorKitchen";
+import { useNavigate } from "react-router-dom";
+
 import { convertToRaw } from "draft-js";
+import { EditorState } from "draft-js";
 
 const EditKitchenPageBody = () => {
+  const navigate = useNavigate("/")
+
+  const content = {
+    entityMap: {},
+    blocks:[
+      { 
+        key: "",
+        text: "",
+        type:"",
+        depth:0,
+        inlineStyleRanges:[],
+        entityRanges: [],
+        data: {}
+      }
+    ]
+  };
+
   const recipesTypes = ["kitchen"];
   const systems = ["Us", "Metric"];
   const courses = ["Salsas", "Carnes", "Sides", "Frijoles", "Otro", "Fritos"];
   const baseTypes = ["Beef", "Bread", "Egg", "Fruit", "Grain", "Lamb", "other"];
+  const dataCtx = useContext(DataContext);
+  const barInputList = dataCtx.barInputList;
+
+  const [editorContent, setEditorContent] = useState(content);
+
+  const [kitchenEditorState, setKitchenEditorState] =useState(() =>EditorState.createEmpty());
 
   const [recipesName, setRecipesName] = useState("");
   const [recipesType, setRecipesType] = useState("kitchen");
@@ -20,17 +46,11 @@ const EditKitchenPageBody = () => {
   const [course, setCourse] = useState("Salsas");
   const [baseType, setBaseType] = useState("Beef");
   const [servingStyle, setServingStyle] = useState("");
-
-  const dataCtx = useContext(DataContext);
-  const barInputList = dataCtx.barInputList;
-  const editorState = dataCtx.editorState
-  const kitchenEditorData = 
-    convertToRaw(editorState.getCurrentContent()).blocks
-  // const data = JSON.stringify(convertToRaw(editorState.getCurrentContent()))
-
+  const kitchenEditorData = convertToRaw(kitchenEditorState.getCurrentContent()).blocks
   const [youtube, setYoutube] = useState("");
 
   const submitHandler = (e) => {
+    
     e.preventDefault();
     const data = {
       recipesName,
@@ -47,6 +67,16 @@ const EditKitchenPageBody = () => {
       youtube,
     };
     console.log(data);
+    
+    setRecipesName("")
+    setComments("")
+    setFile("")
+    setCaption("")
+    setServingStyle("")
+    setYoutube("")
+    setEditorContent(content)
+
+    navigate("/kitchenrecipes")
   };
 
   return (
@@ -183,7 +213,7 @@ const EditKitchenPageBody = () => {
           </div>
 
           <IngredientKitchen />
-          <TextEditorKitchen />
+          <TextEditorKitchen kitchenEditorState={kitchenEditorState} setKitchenEditorState={setKitchenEditorState} editorContent={editorContent} />
 
           <div className="mb-6">
             <label className="mr-9 inline-block  w-[150px]">Youtube Link</label>

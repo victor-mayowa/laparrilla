@@ -6,20 +6,11 @@ import KitchenData from "../Data/KitchenData";
 import CoursesData from "../Data/CoursesData";
 import BaseTypeData from "../Data/BaseTypeData";
 import { useNavigate } from "react-router-dom";
-import { EditorState } from "draft-js";
 
 const DataContext = createContext({});
 
 export const DataContextProvider = ({ children }) => {
   const navigate = useNavigate();
-
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-
-  const [kitchenEditorState, setKitchenEditorState] = useState(() => {
-    EditorState.createEmpty();
-  });
 
   ///MORE ACTION DROP DOWN//////////////////////////////
   const [showDropDown, setShowDropDown] = useState(false);
@@ -225,8 +216,6 @@ export const DataContextProvider = ({ children }) => {
     navigate("/basetype");
   };
 
-  //////////////////////////////////////////////////////////////
-
   //state for input value in Ingredient page
   const [barInputList, setBarInputList] = useState([
     { quantity: "", unit: "", ingredientAdd: "" },
@@ -236,14 +225,13 @@ export const DataContextProvider = ({ children }) => {
     { quantity: "", unit: "", ingredientAdd: "" },
   ]);
 
+
+
+
+
+  
   //CONTEXT/////////////////////////////////////////////////
-
   const context = {
-    editorState: editorState,
-    setEditorState: setEditorState,
-
-    kitchenEditorState: kitchenEditorState,
-    setKitchenEditorState: setKitchenEditorState,
 
     ///MORE ACTION DROP DOWN//////////////////////////////
     showDropDown: showDropDown,
