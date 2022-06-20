@@ -11,6 +11,7 @@
      const setInputs = dataCtx.setInputs
      const inputName = dataCtx.inputName
      const keyboard = dataCtx.keyboard
+     
     
   // const [inputs, setInputs] = useState({});
   // const [inputName, setInputName] = useState("default");
@@ -36,8 +37,6 @@
  
 
    const onKeyPress = button => {
-    //  console.log("Button pressed", button);
- 
      /**
       * If you want to handle the shift and caps lock buttons
       */

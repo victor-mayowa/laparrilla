@@ -1,9 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DataContext from "../store/storeContext";
+import { Formik } from "formik";
 
 
 const LoginBody = () => {
+
+ 
       const navigate = useNavigate()
 
       const dataCtx = useContext(DataContext)   
@@ -12,8 +15,11 @@ const LoginBody = () => {
       const inputName = dataCtx.inputName
       const setInputName = dataCtx.setInputName
       const keyboard = dataCtx.keyboard
-      // const isAuth = dataCtx.isAuth
       const setIsAuth = dataCtx.setIsAuth
+
+      const [formError, setFormError] = useState({})
+      const [submit, setSubmit] = useState(false)
+      // console.log(inputs)
 
     const onChangeInput = event => {
       const inputVal = event.target.value;
@@ -21,43 +27,53 @@ const LoginBody = () => {
         ...inputs,
         [inputName]: inputVal
       });
-    
+      
       keyboard.current.setInput(inputVal);
     };
-    
-    const getInputValue = inputName => {
-     return inputs[inputName] || "";
+
+    const getInputValue = name => {
+     return inputs[name] || "";
     };
 
+    const validate = (values) =>{
+      const error = {}
 
-    const [show, setShow] = useState(false)
+      if(!values.userName){
+        error.userName = "Username cannot be blank"
+      }else if(values.userName.length < 2){
+        error.userName = "Username must not be less than two"
+      }
 
-    
-     const inputsLength =  Object.keys(inputs).length
+      if(!values.password){
+        error.password = "Password cannot be blank"
+      }else if (values.password.length < 4){
+        error.password = "Password must not be less than four"
+      }
 
-      const submitHandler = (e) =>{
-        e.preventDefault()
+      return error
+    }
 
-        if(inputsLength < 2){
-          setShow(true)
-          return( 
-            setTimeout(()=>{
-              setShow(false)
-              
-            },1000)
-          )     
-        }
-        
-        console.log(inputs)
-
+    const finalSubmit = () =>{
+      console.log(inputs)
         //for emptying the inputs
         for(const keys in inputs){
           delete inputs[keys]
         }
-
         setIsAuth(true)
-        
         navigate("/allrecipes")
+    }
+
+    useEffect(() => {
+      if(Object.keys(formError).length === 0 && submit) {
+        finalSubmit()
+      }
+    },[formError])
+
+
+      const submitHandler = (e) =>{
+        e.preventDefault()
+        setFormError(validate(inputs))
+        setSubmit(true)
       }
 
   return (
@@ -77,11 +93,11 @@ const LoginBody = () => {
             id="UserName"
             type="text"
             placeholder="UserName"
-            value={getInputValue("UserName")}
-            onFocus={()=> setInputName("UserName")}
+            value={getInputValue("userName")}
+            onFocus={()=> setInputName("userName")}
             onChange={onChangeInput}
           />
-           <p className={show ? "text-red-500 text-[14px] pl-3" : "hidden"}>Enter username</p>
+           <p className={formError.userName ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.userName}</p>
           </div>
          
 
@@ -92,11 +108,11 @@ const LoginBody = () => {
             id="Password"
             type="password"
             placeholder="Password"
-            value={getInputValue("Password")}
-            onFocus={()=> setInputName("Password")}
+            value={getInputValue("password")}
+            onFocus={()=> setInputName("password")}
             onChange={onChangeInput}
             />
-          <p className={show ? "text-red-500 text-[14px] pl-3" : "hidden"}>Enter password</p>
+          <p className={formError.password ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.password}</p>
           </div>
           
          

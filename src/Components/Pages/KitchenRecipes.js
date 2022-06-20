@@ -5,6 +5,7 @@ import KitchenRecipesHeader from "../KitchenRecipes/KitchenRecipesHeader";
 import KitchenRecipesModal from "../KitchenRecipes/KitchenRecipesModal";
 import AddCoursesModal from "../Courses/AddCoursesModal";
 import AddBaseTypeModal from "../BaseType/AddBaseTypeModal";
+import KitchenRecipesButtons from "../KitchenRecipes/KitchenRecipesButtons";
 
 
 const KitchenRecipes = () => {
@@ -16,7 +17,8 @@ const KitchenRecipes = () => {
       <AddBaseTypeModal/>
       <div className="relative md:ml-[60px] ml-0">
        <KitchenRecipesHeader/>
-        <KitchenRecipesBody />
+       <KitchenRecipesButtons/>
+       <KitchenRecipesBody />
       </div>
     </div>
   );

@@ -36,9 +36,9 @@ const BarRecipesCards = ({id, name, comment, user }) => {
 
       <div className=" text-center">
         <p className="text-[14px] font-light mb-8">User</p>
-        <Link to=""> <p className="font-regular  underline text-[14px] cursor-pointer">
+         <p className="font-regular  text-[14px]">
           {user}
-        </p></Link>
+        </p>
       </div>
     </div>
   );

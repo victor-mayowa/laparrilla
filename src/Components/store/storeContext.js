@@ -27,8 +27,9 @@ export const DataContextProvider = ({ children }) => {
 
   ///KEYBOARD////////////////////////////////////////////////
   ///states from keyBoard components
-  const [inputs, setInputs] = useState({});
-  const [inputName, setInputName] = useState("UserName");
+  const initialValues = { userName: "", password: "" };
+  const [inputs, setInputs] = useState(initialValues);
+  const [inputName, setInputName] = useState("userName");
   const keyboard = useRef();
 
   ///LOGIN///////////////////////////////////////
