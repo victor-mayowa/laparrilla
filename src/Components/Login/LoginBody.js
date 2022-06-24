@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DataContext from "../store/storeContext";
-import { Formik } from "formik";
+
 
 
 const LoginBody = () => {
@@ -19,6 +19,8 @@ const LoginBody = () => {
 
       const [formError, setFormError] = useState({})
       const [submit, setSubmit] = useState(false)
+      const [timeOut, setTimeOut] = useState(true)
+
       // console.log(inputs)
 
     const onChangeInput = event => {
@@ -70,6 +72,14 @@ const LoginBody = () => {
     },[formError])
 
 
+
+  //  useEffect(() => {
+  //     setTimeout(() => {
+      
+  //     }, 1000);
+  //    },timeOut)
+
+
       const submitHandler = (e) =>{
         e.preventDefault()
         setFormError(validate(inputs))
@@ -92,12 +102,12 @@ const LoginBody = () => {
 
             id="UserName"
             type="text"
-            placeholder="UserName"
+            placeholder="Username"
             value={getInputValue("userName")}
             onFocus={()=> setInputName("userName")}
             onChange={onChangeInput}
           />
-           <p className={formError.userName ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.userName}</p>
+           <p className={formError.userName && timeOut ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.userName}</p>
           </div>
          
 
@@ -112,7 +122,7 @@ const LoginBody = () => {
             onFocus={()=> setInputName("password")}
             onChange={onChangeInput}
             />
-          <p className={formError.password ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.password}</p>
+          <p className={formError.password && timeOut ? "text-red-500 text-[14px] pl-3" : "hidden"}>{formError.password}</p>
           </div>
           
          
