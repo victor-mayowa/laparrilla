@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import DataContext from '../store/storeContext';
 
 
-const EditHeader = () => {
+const EditUserHeader = () => {
 
   const dataCtx = useContext(DataContext);
 
@@ -41,4 +41,4 @@ const EditHeader = () => {
   )
 }
 
-export default EditHeader
+export default EditUserHeader

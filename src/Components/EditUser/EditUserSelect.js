@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from 'react-select';
 
-const AddSelect = ({onChange, options, value}) => {
+const EditUserSelect = ({onChange, options, value}) => {
 
     const defaultValue = (options, value) =>{
         return options ? options.find(option => option.value === value) : ""
@@ -22,4 +22,4 @@ const AddSelect = ({onChange, options, value}) => {
   )
 }
 
-export default AddSelect
+export default EditUserSelect

@@ -62,11 +62,8 @@ const Sidebar = () => {
           <Link
             to="/edit"
             state={{
-              userName: "testing",
-              name: "Demo testing",
-              accessLevel: "90",
-              email: "demotesting@gmail.com",
-            }}
+              id:"", userName:"", name:"", accessLevel:"", email:""
+             }}
           >
             <li className="mb-[100px] h-12 w-full flex items-center justify-center cursor-pointer hover:bg-[#024E6E]">
               <MdOutlineSettings color="#BFBFBF" size={25} />
@@ -148,13 +145,10 @@ const Sidebar = () => {
           </Link>
 
           <Link
-            to="/edit"
-            state={{
-              userName: "testing",
-              name: "Demo testing",
-              accessLevel: 90,
-              email: "demotesting@gmail.com",
-            }}
+             to="/edit"
+             state={{
+               id:"", userName:"", name:"", accessLevel:"", email:""
+              }}
           >
             <li className="mb-[100px]  h-12 w-full flex items-center pl-[18px] cursor-pointer hover:bg-[#024E6E]"  onClick={toggleHandler}>
               <MdOutlineSettings color="#BFBFBF" size={25} />
